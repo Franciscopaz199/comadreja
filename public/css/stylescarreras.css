@@ -1,0 +1,46 @@
+.contenido{
+    width: 100%;
+    height: auto;    
+    
+}
+
+.left-section{
+    width: 30%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 50px;
+    position: sticky;
+    top: 20px !important;
+}
+
+.rigth-section{
+    width: 65%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 50px 10px;
+}
+
+.contenedor-secciones{
+    display: flex;
+}
+
+@media screen and (max-width: 968px){
+    .left-section{
+        width: 100%;
+        height: auto;
+        padding: 50px 10px;
+    }
+    .rigth-section{
+        width: 100%;
+        height: auto;
+        padding: 50px 10px;
+    }
+    .contenedor-secciones{
+        box-sizing: border-box;
+        padding: 10px;
+        display: block;
+    }
+}

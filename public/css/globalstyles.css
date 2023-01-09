@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:  'helvetica', sans-serif;
+}
+
+.contenedor {
+    width: 100%;
+    min-height: 100vh;
+    height: auto;
+}
+.contenedor h1{
+    font-size: 60px;
+    font-weight: 300;
+    color: #333;
+    font-family: 'system-ui', sans-serif;
+}
+
+
+
+
+
+
