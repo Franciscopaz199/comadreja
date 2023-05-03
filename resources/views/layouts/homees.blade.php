@@ -8,6 +8,10 @@
     <link rel="stylesheet" href={{ asset('css/style-homees.css') }}>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href={{ asset('css/footer.css') }}>
+    
+    <link rel="stylesheet" href={{ asset('css/style-modern.css') }}>
+    <link rel="stylesheet" href={{ asset('css/components.css') }}>
     @yield('css')
 </head>
 <body>  
@@ -19,8 +23,12 @@
             <div class="menu">
                 <ul>
                     <li>
-                        <a href="#">
-                            <i>
+                        <a href="{{route('companeros')}}">
+                            <i
+                                @if (Request::is('companeros'))
+                                    style="color: var(--secondary-color);"
+                                @endif
+                            >
                                 <ion-icon name="people-circle-outline"></ion-icon>
                             </i>
                         </a>
@@ -48,8 +56,13 @@
                         </a>
                      </li>
                      <li>
-                        <a href="#">
-                            <i class="fa-regular fa-lightbulb"></i>
+                        <a href="{{route('crearplan')}} ">
+                            <i class="fa-regular fa-lightbulb"
+                            @if (Request::is('crearplan'))
+                                style="color: var(--secondary-color);"
+                            @endif
+                            
+                            ></i>
                         </a>
                      </li>
                      <li>

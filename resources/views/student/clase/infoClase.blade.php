@@ -3,17 +3,14 @@
 
 @section('css')
     <link rel="stylesheet" href={{ asset('css/style-clases.css') }}>
-
 @endsection
 
 @section('content')
     <div class="info-user">
         <div class="info-apli">
             <div class="title">
-                <ion-icon name="settings-outline" style="font-size: 50px; color: #000; margin-right: 10px;"
-            ></ion-icon>
-                <h2
-                >{{$clase->clase->name}}</h2>
+                <ion-icon name="settings-outline" style="font-size: 50px; color: #000; margin-right: 10px;"></ion-icon>
+                <h2>{{$clase->clase->name}}</h2>
             </div>
         </div>
         <div class="info-apli">
@@ -148,28 +145,12 @@
             </div>
         </div>
         <div class="info-apli">
-            
              @forelse($clase->clase->students as $user)
-                <div class="rectangulo-user
-                    @if($user->id == Auth::user()->id)
-                        rectangulo-user-active
-                    @endif
-
-                ">
-                    <div class="icon">
-                        <ion-icon name="person-outline"
-                            style="font-size: 50px; color: #000; margin-right: 10px;">
-                            ></ion-icon>
-                    </div>
-                    <div class="info-usuario">
-                        <h4>{{$user->usuario->name}}</h4>
-                        <h6>{{$user->carrer->name}}</h6>
-                    </div>
-                </div>
+                @component('components.user', ['user' => $user])
+                @endcomponent
              @empty
                 <p>No hay personas que puedan llevar esta clase</p>
             @endforelse
-               
         </div>
     </div>
 @endsection

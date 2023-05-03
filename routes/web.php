@@ -82,6 +82,8 @@ Route::get('/estadisticas', [studentController::class, 'estadisticas'])->name('e
 Route::get('/clase', [studentController::class, 'clase'])->name('clase')->middleware('auth');
 Route::get('/clase2', [studentController::class,'clase2'])->name('clase2')->middleware('auth');
 
+
+
 // recibir una variable de la url
 Route::get('prueba/{id}' , function ($id) {
     return view('prueba', compact('id'));

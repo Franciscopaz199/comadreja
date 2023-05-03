@@ -19,6 +19,9 @@
     min-height: calc(100vh - 7vh);
     background-color: var(--principal-color);
 }
+.contenido{
+    width: 100%;
+}
 
 .headerpage{
     width: 100%;

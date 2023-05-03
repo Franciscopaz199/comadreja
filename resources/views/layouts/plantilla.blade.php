@@ -13,7 +13,6 @@
 </head>
 <body>  
     <div class="contenedor">
-        
             @yield('contenido')
         
     </div>

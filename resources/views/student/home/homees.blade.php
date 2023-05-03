@@ -11,22 +11,13 @@
                 <div class="cuadro">
                     <div class="cuadro2" style="width: 100%;">
                     </div>
-                </div>
+                </div>  
                 <div class="div">
                         <img src="{{asset('storage/imagenes/perfil.jpg')}}" alt="">
                         <div class="info">
-                            <h1>{{
-                                Auth::user()->name
-                                }}</h1>
-                            <p>
-
-                                {{
-                                    Auth::user()->student->carrer->name
-                                }}
-                            </p>
-                            <P>{{
-                                    Auth::user()->student->universidad->shortname
-                                }}</P>
+                            <h1>{{Auth::user()->name}}</h1>
+                            <p>{{Auth::user()->student->carrer->name}}</p>
+                            <P>{{Auth::user()->student->universidad->shortname}}</P>
                         </div>
                          <div class="puntos">
                             <a href="">
@@ -35,32 +26,29 @@
                                 <div class="punto"></div>
                              </a>
                         </div>
-                </div>      
+                </div>
         </div>
-       
-            <div class="estadisticas">
-                <p>Estadisticas</p>
-                <div class="container-estadisticas">
-                    <div class="contenedor-barra">
-                        <h6>Clases: {{Auth::user()->student->clases->count()}}/{{Auth::user()->student->carrer->puente->count()}}</h6>
+        <div class="estadisticas">
+            <p>Estadisticas</p>
+            <div class="container-estadisticas">
+                <div class="contenedor-barra">
+                    <h6>Clases: {{Auth::user()->student->clases->count()}}/{{Auth::user()->student->carrer->puente->count()}}</h6>
                         <div class="barra">
                             <div class="barra-porcentaje" style="width: {{(Auth::user()->student->clases->count() / Auth::user()->student->carrer->puente->count())*100}}%">
                             </div>
-                            
                         </div>
-                    </div>
-                    <div class="contenedor-barra">
-                            <h6>UV: {{Auth::user()->student->clases->sum('UV')}}/{{$totalUVcarrera}}</h6>
-                            <div class="barra">
-                                <div class="barra-porcentaje" style="width: {{(Auth::user()->student->clases->sum('UV')/$totalUVcarrera)*100}}%">
+                </div>
+                <div class="contenedor-barra">
+                    <h6>UV: {{Auth::user()->student->clases->sum('UV')}}/{{$totalUVcarrera}}</h6>
+                        <div class="barra">
+                            <div class="barra-porcentaje" style="width: {{(Auth::user()->student->clases->sum('UV')/$totalUVcarrera)*100}}%">
                             </div>
                         </div>
-                    </div>
-                   
-                   
-                </div> 
-                <br>
-                <center><a href="{{route('estadisticas')}}">ver mas...</a></center>
+                </div>  
+            </div> 
+            <br>
+            
+            <center><a href="{{route('estadisticas')}}" class="">ver mas...</a></center>
             <div class="articulo-censo">
                 <h4>Artículo 211.</h4>
                 <hr>
@@ -69,15 +57,13 @@
                 <br><center><a href="">ver mas...</a></center>
             </div>
         </div>  
-        
     </div>
-
-
-
     <div class="muestra-informacion-principal">
        <div class="contenido-aplicacion">
-        <h2>Siguiente Periodo</h2>
-        <p>UV: {{$UV}} Clases: {{$clases->count()}}</p>
+        <div class="content-header-intro">
+            <h1>Siguiente periodo</h1>
+            <p>Supercharge your workflow and connect the tool you use every day.</p>
+        </div>
        </div>
             <div class="contenedor-clases-info">
                 <div class="clases-proximo-periodo">
@@ -116,15 +102,6 @@
                     </div>
                     </div>
                 </div>
-
-      
-      
-
-
-
-
-
-
         <hr>
         <div class="contenido-aplicacion">
             <h2>Necesitas Ayuda?</h2>
@@ -135,28 +112,15 @@
         </div>
         <hr>
         @livewire('selectcant' )
-        
-        
         <div class="articulo-censo">
             <center><h4>Artículo 211.</h4></center>
             <p>"El estudiante, en forma obligatoria, dará a conocer a la institución sus necesidades de horarios de asignaturas o experiencias educativas.
                 Será responsabilidad de los jefes de departamento en asamblea docente y previa consulta con los coordinadores de carrera
             <a href="">ver mas...</a></p>
         </div>
-
-        <footer>
- 
-           <hr>
-            <h6>Desarrollado por IS-CURLP-UNAH-2023</h6>
-            <hr>
-
-
-        </footer>
-     
-
+        <x-footer/>
     </div>
 @endsection
-
 @section('js')
 @livewireScripts
 <script src="{{ asset('js/swiper-bundle.min.js') }}" ></script>
