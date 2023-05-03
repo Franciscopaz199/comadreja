@@ -42,10 +42,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // relacion uno a muchos con la tabla student
+    //relacion uno a uno con la tabla student
     public function student()
     {
-        return $this->hasMany('App\Models\student', 'user', 'id');
+        return $this->hasOne('App\Models\student', 'user', 'id');
     }
-
+    public function setPasswordAttribute($value){
+        // esto encripta el attributo password en la base de datos 
+        $this->attributes['password'] = bcrypt($value);	
+    }
 }

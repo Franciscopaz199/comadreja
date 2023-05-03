@@ -13,7 +13,7 @@ class aplicontroller extends Controller
 {
     public function index()
     {
-        return view('livewire.app.index.index');
+        return view('login.index');
     }
 
     public function login()
@@ -21,7 +21,7 @@ class aplicontroller extends Controller
         if (auth()->check()) {
             return redirect()->route('selectuni');
         }
-        return view('livewire.app.index.login');
+        return view('login.login');
     }
 
     public function register()
@@ -29,29 +29,30 @@ class aplicontroller extends Controller
         if (auth()->check()) {
             return redirect()->route('selectuni');
         }
-
-        return view('livewire.app.index.register');
+        return view('login.register');
     }
 
+
+    // funcion para crear un usuario y un estudiante
     public function create(Request $request)
     {
+        // validacion de los datos del formulario de registro
         $request->validate([
             'name' => 'required',
-            'email' => 'required | email ',
-            'password' => 'required',
-            'cuenta' => 'required' 
+            'email' => ' required|email|unique:users,email|ends_with:@unah.edu.hn,@unah.hn',
+            'password' => 'required | min:8 ',
+            'cuenta' => 'required|min:11|max:11|unique:students,accountnumber' 
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-        $user->save();
-
-        $student = new student();
-        $student->accountnumber = $request->cuenta;
-        $student->user = $user->id;
-        $student->save();
+        // creamos el usuario y el estudiante
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+        ]);
+        $user->student()->create([
+            'accountnumber' => $request->cuenta,
+        ]);
 
         // despues de crear el usuario, iniciamos sesion
         auth()->login($user);
@@ -60,16 +61,24 @@ class aplicontroller extends Controller
 
     public function iniciar(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+        
+        // validacion de los datos del formulario de inicio de sesion
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
 
-        $credentials = $request->only('email', 'password');
-        if (auth()->attempt($credentials)) {
-            return redirect()->route('selectuni');
+        // intentamos iniciar sesion
+        if (Auth::attempt($credentials)) {
+            // si se inicia sesion correctamente, redirigimos al usuario a la pagina de inicio
+            $request->session()->regenerate();
+            return redirect(route('home'));
         }
-        return redirect()->route('apli');
+
+        // si no se inicia sesion correctamente, redirigimos al usuario a la pagina de inicio de sesion
+        return back()->withErrors([
+            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+        ]);
     }
 
 
@@ -78,5 +87,6 @@ class aplicontroller extends Controller
         auth()->logout();
         return redirect()->route('apli');
     }
+
 }
 

@@ -6,12 +6,14 @@
 
 .contenido{
     width:100%;
-    height:100%;
+    min-height:100vh;
     display: flex;   
 }
 .lef-section{
     width: 38%;
-    height: 100%;
+    height: 100vh;
+    position: sticky;
+    top: 0;
     background: var(--content-bg-color);
     display: flex;
     flex-direction: column; 
@@ -61,7 +63,7 @@
 
 .right-section{
     width: 62%;
-    height: 100%;
+    min-height: 100vh;
     background: #fff;
     display: flex;
     justify-content: center;
@@ -69,8 +71,9 @@
 }
 .formulario-container{
     box-sizing: border-box;
+    min-width: 60%;
     padding: 10px;
-
+    padding: 50px 30px;
 }
 .btn-enviar{
     background-color: var(--content-bg-color) !important;
@@ -98,7 +101,7 @@
     }
     .lef-section{
         width: 100%;
-        height: 100vh;
+        min-height: 100vh;
     }
     .medio p {
         font-size: calc(1rem + 0.5vw);

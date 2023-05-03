@@ -15,7 +15,15 @@
     color: #333;
     font-family: 'system-ui', sans-serif;
 }
-
+.contenido-app{
+    width: 100%;
+    height: auto;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 50px;
+  }
 
 
 

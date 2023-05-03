@@ -9,27 +9,30 @@ use App\Models\User;
 use App\Models\student;
 use App\Models\carrera;
 use App\Models\clase;
+use App\Http\Controllers\admin\admincontroller;
+use App\Models\puente;
+
 
 class studentController extends Controller
 {
-    //
+
+
+
+
     public function selectuni()
     {
-        if(auth()->user()->student[0]->uni == null)
+        if( auth()->user()->student->uni == null )
         {
-            return view('livewire.app.student.index', [
+            return view('student.index', [
                 'universidades' => Uni::all()
             ]);
         }
-        else{
-            return redirect()->route('selectcarrera');
-        }
+        return redirect()->route('selectcarrera');
     }
 
     public function selectuniv(Request $request)
     {
         $request->validate([
-            // validar que exista la universidad
             'unive' => 'required | exists:unis,id'
         ]);
 
@@ -37,74 +40,247 @@ class studentController extends Controller
         // agregar la universidad al estudiante mediante la relacion uno a muchos
         $user = User::find(auth()->user()->id);
         $student = $user->student;
-        $student[0]->uni = $universidad;
-        $student[0]->save();
+        $student->uni = $universidad;
+        $student->save();
         return redirect()->route('selectcarrera' );
     }
 
+
+
     public function selectcarrera()
     {
-        if(auth()->user()->student[0]->carrera == null)
+        if(auth()->user()->student->uni == null)
         {
-        return view('livewire.app.student.selecarrera', [
-            'carreras' => Uni::find(auth()->user()->student[0]->uni)->carreras,
-            'universidad' => Uni::find(auth()->user()->student[0]->uni)
-        ]);
-        }else{
-            return redirect()->route('selectclases');
+            return redirect()->route('selectuni');
         }
+
+        if(auth()->user()->student->carrera == null)
+        {
+            return view('student.selecarrera', [
+                'carreras' => Uni::find(auth()->user()->student->uni)->carreras,
+                'universidad' => Uni::find(auth()->user()->student->uni)
+            ]);
+        }
+        return redirect()->route('selectclases');
     }
+
+
+
 
     public function selectcarrer(Request $request)
     {
         $request->validate([
-            // validar que exista la carrera
             'carrera' => 'required | exists:carreras,id'
         ]);
-
         $carrera = $request->carrera;
         // agregar la carrera al estudiante mediante la relacion uno a muchos
         $user = User::find(auth()->user()->id);
         $student = $user->student;
-        $student[0]->carrera = $carrera;
-        $student[0]->save();
-        
+        $student->carrera = $carrera;
+        $student->save();
         return redirect()->route('selectclases');
     }
 
 
     public function selectclases()
     {
-        if(auth()->user()->student[0]->status == null )
+        if(auth()->user()->student->carrera == null)
         {
-            return view('livewire.app.student.selectclases.index', [
-                'carrera' => auth()->user()->student[0]->carrer
+            return redirect()->route('selectcarrera');
+        }   
+
+
+        if(auth()->user()->student->status == null)
+        {
+            return view('student.selectclases.index', [
+                'carrera' => auth()->user()->student->carrer
             ]);
-        }else{
-            return redirect()->route('home');
         }
+        return redirect()->route('home');
+        
     }
+
+
 
     public function checkclase(Request $request)
     {
-        auth()->user()->student[0]->status = true;
-        auth()->user()->student[0]->save();
+    
+        auth()->user()->student->status = true;
+        auth()->user()->student->save();
+        auth()->user()->student->clases()->detach();
 
-        foreach ($request->clase as $clase) {
-            auth()->user()->student[0]->clases()->attach($clase);
+        if($request->clase != null)
+        {
+            foreach ($request->clase as $clase) {
+                auth()->user()->student->clases()->attach($clase);
+            }
         }
+
+         $admin = new admincontroller();
+         $prueba  =  $admin->clasesquepuedelleva();
 
         return redirect()->route('home');
     }
 
+
+
     public function homeestudiante()
     {
-        return view('livewire.app.student.home.home');
+        if(Auth()->user()->student->status == null)
+        {
+            return redirect()->route('selectclases');
+        }
+        
+        $clases = auth()->user()->student->clasesdisponibles;
+
+
+        $UV = 0;
+        foreach ($clases as $clase) {
+            $UV = $UV + $clase->UV;
+        }
+
+
+        return view('student.home.home', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => $clases,
+            'UV' => $UV
+        ]);
     }
 
 
     
+    public function editclases(){
+        return view('homees.editclases', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => auth()->user()->student->clases,
+        ]);
+    }
+
+    public function homees(){
+        if(Auth()->user()->student->status == null)
+        {
+            return redirect()->route('selectclases');
+        }
+        $clases = auth()->user()->student->clasesdisponibles;
+        $UV = 0;
+        $totalUV = 0;
+
+        foreach ($clases as $clase) {
+            $UV = $UV + $clase->clase->UV;
+            
+        }
+
+
+        foreach (auth()->user()->student->carrer->puente as $puente) {
+            $totalUV = $totalUV + $puente->clase->UV;
+        }
+
+        return view('homees.homees', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => $clases,
+            'UV' => $UV,
+            'totalUVcarrera' => $totalUV
+
+        ]);
+    }
+
+
+    public function planestudios(){
+        return view('student.plandeestudios.planestudios', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => auth()->user()->student->clases
+        ]);
+    }
+
+
+    
+    public function crearplan(){
+        return view('student.crear.crearplan', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => auth()->user()->student->clases
+        ]);
+    }  
 
 
 
+    public function companeros(){
+        return view('student.companeros.companeros', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => auth()->user()->student->clases
+        ]);
+    }
+
+
+    public function acercade(){
+        return view('student.acercade.acercade', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => auth()->user()->student->clases
+        ]);
+    }
+
+
+
+    public function util(){
+        return view('student.util.util', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => auth()->user()->student->clases
+        ]);
+    }
+
+
+    public function estadisticas(){
+        return view('homees.estadisticas', [
+            'carrera' => auth()->user()->student->carrer,
+            'clases' => auth()->user()->student->clases
+        ]);
+    }
+
+
+    public function clase(Request $request){
+        $clase = puente::find($request->clase);
+        // dividir el mes actual entre 4 para saber el periodo actual
+        $mes = date('m') -1;
+
+        if($mes <= 7 )  
+        {
+            $periodo =  -abs(intval(($mes/ 4) + 1)-2) + 3;
+            $anio = date('Y');
+        }
+        else
+        {
+            $periodo =  -abs(intval(($mes/ 4) + 1)-2) + 2;
+            $anio = date('Y') + 1;
+        }
+
+        return view('student.clase.clase', [
+            'carrera' => auth()->user()->student->carrer,
+            'clase' => $clase,
+            'periodo' => $periodo,
+            'anio' => $anio
+        ]);
+    }
+
+    public function clase2(Request $request){
+        $clase = puente::find($request->clase);
+        // dividir el mes actual entre 4 para saber el periodo actual
+        $mes = date('m') -1;
+
+        if($mes <= 7 )  
+        {
+            $periodo =  -abs(intval(($mes/ 4) + 1)-2) + 3;
+            $anio = date('Y');
+        }
+        else
+        {
+            $periodo =  -abs(intval(($mes/ 4) + 1)-2) + 2;
+            $anio = date('Y') + 1;
+        }
+
+        return view('homees.infoClase', [
+            'carrera' => auth()->user()->student->carrer,
+            'clase' => $clase,
+            'periodo' => $periodo,
+            'anio' => $anio
+        ]);
+    }
 }

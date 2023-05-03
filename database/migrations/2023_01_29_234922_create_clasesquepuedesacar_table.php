@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id');
             $table->foreignId('clase_id');
+            $table->foreignId('puente_id');
 
             $table->unique(['student_id', 'clase_id']);
 
             // protejer student_id y clase_id con una llave foranea
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('clase_id')->references('id')->on('clases')->onDelete('cascade');
-            
+            $table->foreign('puente_id')->references('id')->on('puente')->onDelete('cascade');
             $table->timestamps();
         });
     }

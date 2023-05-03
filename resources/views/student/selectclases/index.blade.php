@@ -11,8 +11,10 @@
                 <h2 >Ya casi acabamos...</h2>
             </div>
             <div class="medio">
-                <h4>¿Por que es necesario hacer esto?</h4>
-                <p>necesitamos conocer tus datos antes de </p>
+                <h4></h4>
+                <p>No te preocupes si no seleccionas todas tus clases a la primera o si olvidas alguna, despues podras actualizarlas
+                    pero asegurarte de no equivocarte para que no tengas problemas al momento de hacer tu plan de estudios.
+                </p>
             </div>
             <div class="bottom">
                 <p>desarrollado por IS-UNAH</p>
@@ -32,19 +34,20 @@
             <div class="slide-content">
                 <form class="card-wrapper swiper-wrapper" action="{{route('checkclase')}}" method="POST" id="formularioclases">   
                     @csrf
-                        @foreach ($carrera->clases  as $uni)
-                        <input type="checkbox"   value="{{$uni->id}}" id="{{$uni->id}}" class="radioseleccion" name ="clase[]">
-                               <label class="card swiper-slide" for="{{$uni->id}}">
+                        @foreach ($carrera->puente as $uni)
+                        
+                        <input type="checkbox"   value="{{$uni->clase->id}}" id="{{$uni->clase->id}}" class="radioseleccion" name ="clase[]">
+                               <label class="card swiper-slide" for="{{$uni->clase->id}}">
                                    <div class="image-content">
                                        <span class="overlay"></span>
                                        <div class="card-image">
-                                           <img src="{{ asset( $uni->logo )  }}" alt="" class="card-img">
+                                           <img src="{{ asset( $uni->clase->logo )  }}" alt="" class="card-img">
                                        </div>
                                    </div>
                                    <div class="card-content">
-                                       <h2 class="name">{{$uni->name}}</h2>
-                                       <p class="description">{{$uni->codigo}}</p>
-                                       <p class="description">depto: {{$uni->departa->name}}</p>
+                                       <h2 class="name">{{$uni->clase->name}}</h2>
+                                       <p class="description">{{$uni->clase->codigo}}</p>
+                                       <p class="description">depto: {{$uni->clase->departa->name}}</p>
                                    </div>
                                </label>
                     @endforeach

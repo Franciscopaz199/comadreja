@@ -24,7 +24,17 @@
             <div class="formulario-container">
                  <div class="title">
                     <b><h4>Iniciar Sesion</h4></b>
-                    <p>Por favor inicia sesion con tu usuario y contrasena</p>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <p>Sesion no Iniciada</p>
+                            <ul>
+                                @foreach ($errors->all() as $errors)
+                                    <li>{{$errors}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <p>Por favor inicia sesion con tu usuario y contraseña</p>
                  </div>
                 <form action="{{route('iniciar')}}" method="POST">
                     @csrf

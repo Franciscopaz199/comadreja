@@ -1,0 +1,257 @@
+/* importar fuente de google font*/
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca');
+
+.contenido{
+    width: calc(100% - 100px);
+    min-height: calc(93vh);
+    background-color: rgb(253, 253, 253);
+    display: flex;
+
+}
+
+.info-user{
+    width: 35%;
+    height: calc(100vh - 10vh);
+
+    display: flex;
+    flex-direction: column;
+
+    
+    border-right: 1px solid #b0b0b0f5;
+
+    position: sticky;
+    top: 7vh;
+   
+}
+
+.cuadro{
+    width: 100%;
+    height:90px;
+    background-color: var(--quaternary-color);
+}
+.cuadro2{
+    height: 100%;
+    background-color: var(--secondary-color);
+}
+.div{
+    width: 100%;
+    
+    display: flex;
+    
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+
+.informacion-usuario{
+    width: 100%;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    
+    
+
+    box-sizing: border-box;
+}
+
+.informacion-usuario img{
+    width: 100px;
+    height: 100px;
+    
+    border-radius: 50%;
+
+    margin-top:  -60px;
+}
+.usuario{
+    width: 100%;
+    height: 100px;
+}
+.info{
+    width:60%;
+    padding: 10px 10px;
+    margin-top: -20px;
+}
+.info h1{
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: calc(1rem + 1.2vw);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.info p{
+   
+    font-family: sans-serif;
+    margin-top: -15px;
+}
+.puntos{
+    width: 20%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.puntos a {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+}
+.punto {
+    width: 7px;
+    height: 7px;
+    background-color: #000;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.estadisticas{
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+
+    margin-top: -30px;
+    padding: 30px;
+}
+
+.barra{
+    width: 100%;
+    height: 5px;
+    background-color: #CCCCCC;
+    border-radius: 10px;
+}
+.contenedor-barra{
+    width: 100%;
+    margin-top: 10px;
+
+    box-sizing: border-box;
+    padding: 0px 20px;
+}
+.barra-porcentaje{
+    height: 5px;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+.container-estadisticas{
+    width: 100%;
+    
+    box-sizing: border-box;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+}
+.articulo-censo{
+    width: 100%;
+    margin-top: 40px;
+    background-color: #fff;
+
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.muestra-informacion-principal{
+    width: 65%;
+    height: auto;
+
+    min-height:  calc(100vh - 8vh);
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.contenido-aplicacion{
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+footer{
+    width: 100%;
+    height: 80vh;
+    background-color: var(--tertiary-color);
+   
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+    padding: 70px;
+    color: #fff;
+}
+/* menu*/ 
+
+
+
+@media screen and (max-width: 1250px) {
+    .contenido{
+        width: calc(100% - 100px);
+        flex-direction: column;
+    }
+  
+    .info-user{
+        width: 100%;
+        height: auto;
+        border-right: none;
+        
+        position: relative;
+        top: 0;
+    }
+    .muestra-informacion-principal{
+        width: 100%;
+    }
+    .estadisticas{
+        height: auto;
+    }
+    .estadisticas{
+        margin-top: -20px;
+        padding: 0;
+    }
+    .articulo-censo{
+        display: none;
+    }
+        
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .articulo-censo{
+        display: none;
+    }
+    .contenido{
+        width: 100%;
+        flex-direction: column;
+    }
+    .info-user{
+        width: 100%;
+        height: auto;
+        border-right: none;
+        
+        position: relative;
+        top: 0;
+    }
+    .cuadro{
+        height: 70px;
+    }
+    .muestra-informacion-principal{
+        width: 100%;
+    }
+    .contenido-aplicacion{
+        padding: 10px 20px;
+    }
+    .info{
+        width: 100%;
+    }
+    .puntos{
+        width: 20%;
+        justify-content: flex-end;
+    }
+    .container-estadisticas{
+        margin-top: -30px;
+        padding: 0;
+    }
+    .estadisticas{
+        margin-top: 0;
+        height: auto;
+    }
+   
+}

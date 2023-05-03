@@ -75,7 +75,6 @@ class Clases extends Component
     public function edit($id)
     {
         $record = Clase::findOrFail($id);
-
         $this->selected_id = $id; 
 		$this->name = $record-> name;
 		$this->description = $record-> description;
@@ -83,7 +82,6 @@ class Clases extends Component
 		$this->codigo = $record-> codigo;
 		$this->UV = $record-> UV;
 		$this->dificultad = $record-> dificultad;
-		
         $this->updateMode = true;
     }
 
@@ -99,12 +97,12 @@ class Clases extends Component
         if ($this->selected_id) {
 			$record = Clase::find($this->selected_id);
             $record->update([ 
-			'name' => $this-> name,
-			'description' => $this-> description,
-			'departamento' => $this-> departamento,
-			'codigo' => $this-> codigo,
-			'UV' => $this-> UV,
-			'dificultad' => $this-> dificultad
+                'name' => $this-> name,
+                'description' => $this-> description,
+                'departamento' => $this-> departamento,
+                'codigo' => $this-> codigo,
+                'UV' => $this-> UV,
+                'dificultad' => $this-> dificultad
             ]);
 
             $this->resetInput();

@@ -8,23 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class student extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'accountnumber',
+        'uni',
+        'carrera',
+        'user',
+    ];
 
-    // relacion uno a muchos con la tabla universidad
+
+    // relacion uno a uno con la tabla universidad
     public function universidad()
     {
-        return $this->belongsTo('App\Models\Uni');
+        return $this->hasOne('App\Models\uni', 'id', 'uni');
     }
-
     /// relacion uno a uno con la tabla carrera
     public function carrer()
     {
         return $this->hasOne('App\Models\carrera', 'id', 'carrera');
     }
-    // relacion uno a muchos con la tabla user
-    public function user()
+    // relacion uno a uno con la tabla user
+    public function usuario()
     {
-        return $this->belongsTo('App\Models\User');
-    }
+        return $this->hasOne('App\Models\User', 'id', 'user');
+    }  
 
     public function clases()
     {
@@ -34,6 +40,7 @@ class student extends Model
    // clases que puede sacar el estudiante
     public function clasesdisponibles()
     {
-        return $this->belongsToMany('App\Models\clase', 'clasesquepuedesacar', 'student_id', 'clase_id');
+        return $this->belongsToMany('App\Models\puente', 'clasesquepuedesacar', 'student_id', 'puente_id');
     }
+
 }

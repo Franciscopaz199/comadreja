@@ -18,7 +18,7 @@ use App\Http\Controllers\apli\studentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.index');
 });
 
 Auth::routes();
@@ -71,4 +71,18 @@ Route::post('/selectclases',[studentController::class, 'checkclase'])->name('che
 
 
 // rutas home de estudiante
-Route::get('/homeestudiante',[studentController::class, 'homeestudiante'])->name('home')->middleware('auth');
+Route::get('/homeestudiante',[studentController::class, 'homees'])->name('home')->middleware('auth');
+/*Route::get('/homeestudiante',[studentController::class, 'homeestudiante'])->name('home')->middleware('auth');*/Route::get('/editclases',[studentController::class, 'editclases'])->name('editclases')->middleware('auth');
+Route::get('/planestudios',[studentController::class, 'planestudios'])->name('planestudios')->middleware('auth');
+Route::get('/crearplan', [studentController::class, 'crearplan'])->name('crearplan')->middleware('auth');
+Route::get('/companeros', [studentController::class, 'companeros'])->name('companeros')->middleware('auth');
+Route::get('/acercade', [studentController::class, 'acercade'])->name('acercade')->middleware('auth');
+Route::get('/util', [studentController::class, 'util'])->name('util')->middleware('auth');
+Route::get('/estadisticas', [studentController::class, 'estadisticas'])->name('estadisticas')->middleware('auth');
+Route::get('/clase', [studentController::class, 'clase'])->name('clase')->middleware('auth');
+Route::get('/clase2', [studentController::class,'clase2'])->name('clase2')->middleware('auth');
+
+// recibir una variable de la url
+Route::get('prueba/{id}' , function ($id) {
+    return view('prueba', compact('id'));
+})->name('prueba');

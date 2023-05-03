@@ -1,8 +1,14 @@
 @extends('layouts.plantilla')
 @section('css')
-    <link href="{{ asset('css/loginstyles.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/loginstyles.css') }}" rel="stylesheet">
+    <style>
+        .contenido{
+            display: flex;
+            flex-direction: row-reverse
+        }
+    </style>
 @section('contenido')
-    <div class="contenido" style="flex-direction: row-reverse !important;">
+    <div class="contenido">
         <div class="lef-section">
             <div class="top">
                 <h2 >Class Assitan</h2>
@@ -22,27 +28,41 @@
         </div>
         <div class="right-section">
             <div class="formulario-container">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <p>No se ha completado tu registro</p>
+                        <ul>
+                            @foreach ($errors->all() as $errors)
+                                <li>{{$errors}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                
                 <div class="title">
                    <b><h4>Registarse </h4></b>
                    <p>Por favor escribe tus datos reales en esta seccion</p>
                 </div>
+                
+
+
                <form action="{{route('create')}}" method="POST">
                 @csrf
                    <div class="form-group">
                        <label for="email">Correo</label>
-                       <input type="email" name="email" id="email"  class="form-control" placeholder="ejemplo: fjpazf@unah.hn">
+                       <input type="email" name="email" id="email"  class="form-control" placeholder="ejemplo: fjpazf@unah.hn" required>
                    </div>
                    <div class="form-group">
                         <label for="email">Nombre de Usuario</label>
-                        <input type="text" name="name" id="email"  class="form-control" placeholder="ejemplo: Francisco Paz">
+                        <input type="text" name="name" id="email"  class="form-control" placeholder="ejemplo: Francisco Paz" required>
                     </div>
                     <div class="form-group">
                         <label for="cuenta">Numero de Cuenta</label>
-                        <input type="text" name="cuenta" id="cuenta"  class="form-control" placeholder="ejemplo: 20212300157">
+                        <input type="text" name="cuenta" id="cuenta"  class="form-control" placeholder="ejemplo: 20212300157" required>
                     </div>
                    <div class="form-group">
                        <label for="password">Contraseña</label>
-                       <input type="password" name="password" id="password" class="form-control" placeholder="**********">
+                       <input type="password" name="password" id="password" class="form-control" placeholder="ejemplo: **********" required>
                    </div>
                    <div class="form-group">
                        <button type="submit" class="btn btn-enviar btn-block" style="width: 100% !important;  ">Iniciar sesion</button>
@@ -52,5 +72,4 @@
            </div>
         </div>
     </div>
-
 @endsection

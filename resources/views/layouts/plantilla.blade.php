@@ -13,7 +13,9 @@
 </head>
 <body>  
     <div class="contenedor">
-        @yield('contenido')
+        
+            @yield('contenido')
+        
     </div>
 </body>
 @livewireScripts

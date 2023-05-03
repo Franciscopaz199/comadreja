@@ -20,16 +20,24 @@ class carrerasdash extends Controller
     {
         $carrera = Carrera::find($request->id);
         return view('livewire.carrerasdashboard.panel', [
-            'carrera' => $this->getClasescarrera($carrera),
+            'carrera' => $carrera,
         ]);
     }
 
     public function eliminar(Request $request)
     {
-        $carrera = $this->getClasescarrera(Carrera::find($request->id));
-        $clase = $this->shearchclase($request->clase_id, $carrera);
-        $this->prioridad($clase, $carrera, -1);   
-        $carrera->clases()->detach($request->clase_id);
+        $carrera = Carrera::find($request->id); 
+        $puente = $carrera->puente()->where('id', $request->clase_id)->first();
+
+        if($puente->requisitos->count() > 0){
+            foreach($puente->requisitos as $requisito){
+                $p = $carrera->puente()->where('clases_id', $requisito->id)->first();
+                $this->prioridad($p, $carrera, -1);
+            }
+         }
+
+        $puente->delete();
+
         return redirect()->route('carreraspanel', ['id' => $request->id]);
     }
 
@@ -40,78 +48,43 @@ class carrerasdash extends Controller
             'id' => 'required',
             'codeclass' => 'required',
         ]);
-
         $carrera = Carrera::find($request->id);
         $clase = Clase::where('codigo', $request->codeclass)->first();
+        $existe = $carrera->puente()->where('clases_id', $clase->id)->first();
         
-        // validar si existe el requisito de la clase
-        if ($request->requisitoclass) {
-            $requisito = Clase::where('codigo', $request->requisitoclass)->first()->id;
-        } else {
-            $requisito = null;
-        }
-        if($request->requisitoclass2){
-            $requisito2 = Clase::where('codigo', $request->requisitoclass2)->first()->id;
+        if($existe){
+            $puente = $existe;
         }else{
-            $requisito2 = null;
+            $puente = new \App\Models\puente;
+            $puente->clases_id = $clase->id;
+            $puente->career_id = $carrera->id;
+            $puente->save();
         }
 
-        
-        // buscar la clase en la lista de clases de la carrera
-       
- 
-        // agregar la relacion de muchos a muchos entre carrera y clases
-        $carrera->clases()->attach($clase->id, ['requisito_id' => $requisito, 'requisito2_id' => $requisito2, 'prioridad' => 0]);
-        $carrera =$this->getClasescarrera($carrera);
-        foreach ($carrera->clases as $clasec) {
-            if ($clasec->id == $clase->id) {
-                $this->prioridad($clasec, $carrera,1);
-                break;
-            }
+        if($request->requisitoclass){
+            $requisito = Clase::where('codigo', $request->requisitoclass)->first();
+            $puente->requisitos()->attach($requisito->id);
+            $p = $carrera->puente()->where('clases_id', $requisito->id)->first();
+            $this->prioridad($p, $carrera, 1);
         }
+
         return redirect()->route('carreraspanel', ['id' => $request->id]);
     }
 
 
     public function prioridad($clase, $carrera, $n)
     {
+        $clase->prioridad = $clase->prioridad + $n;
+        $clase->save();
         if($clase->requisitos){
             foreach ($clase->requisitos as $requisito) {
-                // actualizar la prioridad pivote de la clase
-                $nueva = $requisito->pivot->prioridad + $n;
-                $carrera->clases()->updateExistingPivot($requisito->id, ['prioridad' =>  $nueva]);
-                    if($requisito->requisitos){
-                        $this->prioridad($requisito, $carrera, $n);
-                    }
+                $p = $carrera->puente()->where('clases_id', $requisito->id)->first();
+                $this->prioridad($p, $carrera, $n);
             }
         }
     }
 
-    public function getClasescarrera($carrera)
-    {
-        // buscar en un array de clases
 
-        foreach ($carrera->clases as $clase) {
-            if($clase->pivot->requisito_id){
-                // agregar a la lista 
-                array_push($clase->requisitos, $this->shearchclase($clase->pivot->requisito_id, $carrera));
-            }
-            if($clase->pivot->requisito2_id){
-                array_push($clase->requisitos, $this->shearchclase($clase->pivot->requisito2_id, $carrera));
-            }
-        }
-        return $carrera;
-    }
-
-    public function shearchclase($id, $carrera)
-    {
-        foreach ($carrera->clases as $clasec) {
-            if ($clasec->id == $id) {
-                return $clasec;
-            }
-        }
-        return null;
-    }
     
 }
 

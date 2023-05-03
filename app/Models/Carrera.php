@@ -10,9 +10,7 @@ class Carrera extends Model
 	use HasFactory;
 	
     public $timestamps = true;
-
     protected $table = 'carreras';
-
     protected $fillable = ['name','shortname','status','logo','description','color1','color2','color3','facultad'];
 	
     /**
@@ -26,9 +24,15 @@ class Carrera extends Model
     // relacion de muchos a muchos con la tabla clases
 
     // relacion de muchos a muchos con la tabla clases
-    public function clases()
+   
+    // relacion de uno a muchos con el modelo student
+    public function students()
     {
-        return $this->belongsToMany('App\Models\Clase', 'carreras_has_clasess', 'career_id', 'clases_id')->withPivot('requisito_id','requisito2_id', 'id', 'prioridad');
+        return $this->hasMany('App\Models\Student','carrera', 'id');
     }
-    
+    // relacion uno a muchos con el modelo puente
+    public function puente()
+    {
+        return $this->hasMany('App\Models\puente', 'career_id', 'id');
+    }
 }

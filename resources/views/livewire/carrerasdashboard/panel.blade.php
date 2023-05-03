@@ -13,7 +13,7 @@
           <p>
                 Total de materias:
                 <span class="text-primary">
-                    {{$carrera->clases->count()}}
+                    {{$carrera->puente->count()}}
                 </span>
 
           </p>
@@ -38,10 +38,7 @@
                       <label for="exampleInputPassword1">Requisito (opcional)</label>
                       <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Requisito" name="requisitoclass">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Requisito 2 (opcional)</label>
-                    <input  type="text" class="form-control" id="exampleInputPassword1" placeholder="Requisito" name="requisitoclass2">
-                </div>
+                  
                   <button type="submit" class="btn btn-primary" type="submit" style="width: 100% !important;">Agregar</button>
                 </div> 
             </form>
@@ -64,24 +61,25 @@
                       </tr>
                   </thead>
                   <tbody>
-                      @foreach ($carrera->clases as $materia)
+                      @foreach ($carrera->puente as $materia)
                               <tr class="selectcar">
-                                  <td>{{$materia->codigo}}</td>
-                                  <td>{{$materia->name}}</td>
+                                  <td>{{$materia->clase->codigo}}</td>
+                                  <td>{{$materia->clase->name}}</td>
                                   <td>
                                      @forelse ($materia->requisitos as $requisito)
                                         {{$requisito->codigo}}
+
                                         @empty
                                         <p>ninguno</p>
                                     @endforelse
                               </td>
-                                  <td>{{$materia->pivot->prioridad}}</td>
+                                  <td>{{$materia->prioridad}}</td>
                                   <td>
                                     <form method="POST" action={{ route('carreraseliminar')}}>
                                       @csrf
                                       <input type="hidden" name="clase_id" value="{{$materia->id}}">
                                       <input type="hidden" name="id" value="{{$carrera->id}}">
-                                      @if($materia->pivot->prioridad == 0)
+                                      @if($materia->prioridad == 0)
                                         <button type="submit" class="btn btn-danger" type="submit">Eliminar</button>
                                        @else
                                         <button type="submit" class="btn  btn-secondary" type="submit" disabled>Eliminar</button> 
