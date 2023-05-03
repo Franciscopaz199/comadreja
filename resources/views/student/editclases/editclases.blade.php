@@ -1,4 +1,4 @@
-@extends('layouts.homeLayout')
+@extends('layouts.homees')
 @section('css') 
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -86,4 +86,3 @@
   });
 </script>     
 @endsection
-

@@ -15,10 +15,6 @@ use App\Models\puente;
 
 class studentController extends Controller
 {
-
-
-
-
     public function selectuni()
     {
         if( auth()->user()->student->uni == null )
@@ -108,7 +104,7 @@ class studentController extends Controller
         auth()->user()->student->status = true;
         auth()->user()->student->save();
         auth()->user()->student->clases()->detach();
-
+    
         if($request->clase != null)
         {
             foreach ($request->clase as $clase) {
@@ -118,11 +114,8 @@ class studentController extends Controller
 
          $admin = new admincontroller();
          $prueba  =  $admin->clasesquepuedelleva();
-
         return redirect()->route('home');
     }
-
-
 
     public function homeestudiante()
     {
@@ -130,10 +123,7 @@ class studentController extends Controller
         {
             return redirect()->route('selectclases');
         }
-        
         $clases = auth()->user()->student->clasesdisponibles;
-
-
         $UV = 0;
         foreach ($clases as $clase) {
             $UV = $UV + $clase->UV;
@@ -150,7 +140,7 @@ class studentController extends Controller
 
     
     public function editclases(){
-        return view('homees.editclases', [
+        return view('student.editclases.editclases', [
             'carrera' => auth()->user()->student->carrer,
             'clases' => auth()->user()->student->clases,
         ]);
@@ -175,7 +165,7 @@ class studentController extends Controller
             $totalUV = $totalUV + $puente->clase->UV;
         }
 
-        return view('homees.homees', [
+        return view('student.home.homees', [
             'carrera' => auth()->user()->student->carrer,
             'clases' => $clases,
             'UV' => $UV,
@@ -229,11 +219,12 @@ class studentController extends Controller
 
 
     public function estadisticas(){
-        return view('homees.estadisticas', [
+        return view('student.estadisticas.estadisticas', [
             'carrera' => auth()->user()->student->carrer,
             'clases' => auth()->user()->student->clases
         ]);
     }
+
 
 
     public function clase(Request $request){
@@ -260,6 +251,8 @@ class studentController extends Controller
         ]);
     }
 
+
+
     public function clase2(Request $request){
         $clase = puente::find($request->clase);
         // dividir el mes actual entre 4 para saber el periodo actual
@@ -276,7 +269,7 @@ class studentController extends Controller
             $anio = date('Y') + 1;
         }
 
-        return view('homees.infoClase', [
+        return view('student.clase.infoClase', [
             'carrera' => auth()->user()->student->carrer,
             'clase' => $clase,
             'periodo' => $periodo,
