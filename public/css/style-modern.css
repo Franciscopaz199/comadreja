@@ -392,7 +392,7 @@ img {
   }
 }
 
-.card {
+.card-m {
   background-color: var(--c-background-primary);
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.05);
   border-radius: 8px;
@@ -401,17 +401,17 @@ img {
   flex-direction: column;
 }
 
-.card-header {
+.card-header-m {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   padding: 1.5rem 1.25rem 1rem 1.25rem;
 }
-.card-header div {
+.card-header-m div {
   display: flex;
   align-items: center;
 }
-.card-header div span {
+.card-header-m div span {
   width: 40px;
   height: 40px;
   border-radius: 8px;
@@ -419,15 +419,15 @@ img {
   align-items: center;
   justify-content: center;
 }
-.card-header div span img {
+.card-header-m div span img {
   max-height: 100%;
 }
-.card-header div h3 {
+.card-header-m div h3 {
   margin-left: 0.75rem;
   font-weight: 500;
 }
 
-.toggle span {
+.toggle-m span {
   display: block;
   width: 40px;
   height: 24px;
@@ -437,7 +437,7 @@ img {
   position: relative;
   transition: 0.15s ease;
 }
-.toggle span:before {
+.toggle-m span:before {
   content: "";
   display: block;
   position: absolute;
@@ -450,7 +450,7 @@ img {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
   transition: 0.15s ease;
 }
-.toggle input {
+.toggle-m input {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -460,22 +460,22 @@ img {
   white-space: nowrap;
   width: 1px;
 }
-.toggle input:checked + span {
+.toggle-m input:checked + span {
   background-color: var(--c-accent-primary);
 }
-.toggle input:checked + span:before {
+.toggle-m input:checked + span:before {
   transform: translateX(calc(100% - 2px));
 }
-.toggle input:focus + span {
+.toggle-m input:focus + span {
   box-shadow: 0 0 0 4px var(--c-background-tertiary);
 }
 
-.card-body {
+.card-body-m {
   padding: 1rem 1.25rem;
   font-size: 0.875rem;
 }
 
-.card-footer {
+.card-footer-m {
   margin-top: auto;
   padding: 1rem 1.25rem;
   display: flex;
@@ -483,7 +483,7 @@ img {
   justify-content: flex-end;
   border-top: 1px solid var(--c-border-primary);
 }
-.card-footer a {
+.card-footer-m a {
   color: var(--c-text-action);
   text-decoration: none;
   font-weight: 500;

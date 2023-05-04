@@ -104,7 +104,10 @@ class studentController extends Controller
         auth()->user()->student->status = true;
         auth()->user()->student->save();
         auth()->user()->student->clases()->detach();
+
+        // validar que todos los ids de las clases existan en la base de datos
     
+
         if($request->clase != null)
         {
             foreach ($request->clase as $clase) {
@@ -114,7 +117,7 @@ class studentController extends Controller
 
          $admin = new admincontroller();
          $prueba  =  $admin->clasesquepuedelleva();
-        return redirect()->route('home');
+         return redirect()->route('home');
     }
 
     public function homeestudiante()
@@ -128,8 +131,6 @@ class studentController extends Controller
         foreach ($clases as $clase) {
             $UV = $UV + $clase->UV;
         }
-
-
         return view('student.home.home', [
             'carrera' => auth()->user()->student->carrer,
             'clases' => $clases,

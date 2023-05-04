@@ -8,10 +8,7 @@
 @section('content')
     <div class="info-user">
         <div class="info-apli">
-            <div class="title">
-                <ion-icon name="settings-outline" style="font-size: 50px; color: #000; margin-right: 10px;"></ion-icon>
-                <h2>{{$clase->clase->name}}</h2>
-            </div>
+            <h4>Datos Generales</h4>
         </div>
         <div class="info-apli">
             
@@ -138,6 +135,18 @@
     <div class="muestra-informacion-principal">
         <div class="info-apli">
             <div class="title">
+                <ion-icon name="settings-outline" style="font-size: 50px; color: #000; margin-right: 10px;"></ion-icon>
+                <h2>{{$clase->clase->name}}</h2>
+            </div>
+            <div class="horizontal-tabs">
+                <a href="#" class="active">Participantes</a>
+                <a href="#">Periodos disponibles</a>
+                <a href="#">Importancia</a>
+            </div>
+        </div>
+        <div class="info-apli">
+            
+            <div class="title">
                 <ion-icon name="people-outline"
                 style="font-size: 50px; color: #000; margin-right: 10px;">
                 ></ion-icon>
@@ -151,6 +160,7 @@
              @empty
                 <p>No hay personas que puedan llevar esta clase</p>
             @endforelse
+            <x-footer></x-footer>
         </div>
     </div>
 @endsection

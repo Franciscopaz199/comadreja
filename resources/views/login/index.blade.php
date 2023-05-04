@@ -1,6 +1,7 @@
 @extends('layouts.plantilla')
 @section('css')
     <link href="{{ asset('css/indexStyles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 @endsection
 @section('contenido')
     <div class="contenido">
@@ -9,4 +10,5 @@
             <p><a href="{{ route('login') }}">Start</a></p>
         </div>
     </div>
+    <x-footer></x-footer>
 @endsection

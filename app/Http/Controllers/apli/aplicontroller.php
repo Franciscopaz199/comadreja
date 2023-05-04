@@ -50,6 +50,7 @@ class aplicontroller extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ]);
+        
         $user->student()->create([
             'accountnumber' => $request->cuenta,
         ]);

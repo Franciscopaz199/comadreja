@@ -80,6 +80,8 @@ Route::get('/acercade', [studentController::class, 'acercade'])->name('acercade'
 Route::get('/util', [studentController::class, 'util'])->name('util')->middleware('auth');
 Route::get('/estadisticas', [studentController::class, 'estadisticas'])->name('estadisticas')->middleware('auth');
 Route::get('/clase', [studentController::class, 'clase'])->name('clase')->middleware('auth');
+
+// esta ruta es para la clase es decir la  informacion de la clase
 Route::get('/clase2', [studentController::class,'clase2'])->name('clase2')->middleware('auth');
 
 

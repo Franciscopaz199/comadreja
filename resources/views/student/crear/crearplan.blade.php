@@ -6,33 +6,30 @@
 	<div class="responsive-wrapper">
 		<div class="conta">
             <div class="main-header"> 
-                <h1>{{ $carrera->name }}</h1>
+                <h1>Generando Plan de estudio</h1>
             </div>
             <div class="main-header">
-                <h3>UNAH-CURLP</h3>
+                <p>Selecciona el modo</p>
 
             </div>
             <div class="horizontal-tabs">
-                <a href="#" class="active">Estudiantes</a>
-                <a href="#">Informacion</a>
-                <a href="#">Clases</a>
+                <a href="#" class="active">Automatico</a>
+                <a href="#">Manual</a>
             </div>
         </div>
 		<div class="content-header">
 			<div class="content-header-intro">
-				<h2>Mostrando participantes de la carrera: {{ $carrera->students->count() }}</h2>
-                <p>Estos son los participantes de la carrera</p>
+				<h4>Modo Automatico </h4>
+                <p><b>Instrucciones</b> selecciona la cantidad de clases que deseas cursar por periodo</p>
 			</div>
 		</div>
 		<div class="content">
 			<div class="content-panel">
 				<div class="vertical-tabs">
-					<a href="#" class="active">View all</a>
-					<a href="#">Developer tools</a>
-					<a href="#">Communication</a>
-					<a href="#">Productivity</a>
-					<a href="#">Browser tools</a>
-					<a href="#">Marketplace</a>
+					<a href="#" class="active">3 clases</a>
+					<a href="#">4 Clases</a>
+					<a href="#">5 Clases</a>
+					
 				</div>
 			</div>
 			<div class="content-main">
