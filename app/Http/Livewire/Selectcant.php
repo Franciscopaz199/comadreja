@@ -29,8 +29,7 @@ class Selectcant extends Component
     {   
 
        $this->clasesperiodo1 =  auth()->user()->student->clasesdisponibles->sortByDesc('prioridad')->take($cantidad);
-       
-         $this->clasesperiodo1 = $this->clasesperiodo1->shuffle();
+       $this->clasesperiodo1 = $this->clasesperiodo1->shuffle();
     }
    
 

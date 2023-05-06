@@ -323,7 +323,7 @@ img {
   .content-header-actions a:first-child {
     display: none;
   }
-}
+
 
 .content {
   border-top: 1px solid var(--c-border-primary);
@@ -333,15 +333,23 @@ img {
 }
 
 .content-panel {
-  display: none;
   max-width: 280px;
   width: 25%;
   padding: 2rem 1rem 2rem 0;
   margin-right: 3rem;
 }
+}
 @media (min-width: 800px) {
   .content-panel {
     display: block;
+  }
+  
+}
+
+@media screen and (max-width: 800px) {
+  .vertical-tabs {
+   flex-direction: row !important;
+    overflow-x: auto;
   }
 }
 

@@ -1,10 +1,12 @@
 <div class="responsive-wrapper">
     <div class="conta">
-        <div class="main-header"> 
-            <h1>{{ $carrera->name }}</h1>
+        <div class="main-header" style="display: flex; flex-direction:column; align-items: flex-start;">
+            <h3>{{auth()->user()->student->universidad->shortname}}</h3>  
+            <h3>{{auth()->user()->student->universidad->name}}</h3>           
         </div>
         <div class="main-header">
-            <h3>UNAH-CURLP</h3>
+            <h1>{{ $carrera->name }}</h1>
+
         </div>
         <div class="horizontal-tabs">
                 <a href="#" @if($status == 1) class="active" @endif  wire:click="changeStatus(1)">Participantes</a>
@@ -35,8 +37,10 @@
     @elseif($status == 2)
         <div class="content-header">
             <div class="content-header-intro">
-               
                 <p>Esta es la informacion de la carrera</p>
+                <p><strong>alumnos:</strong> {{ $carrera->students->count() }}</p>
+                <p><strong>clases:</strong> {{ $carrera->puente->count() }}</p>
+
             </div>
         </div>
      

@@ -47,30 +47,33 @@
                      </li>
                      <li class="inicio">
                         <a href="{{route('home')}}">
-                            <i class="fa-solid fa-house"
+                            <i 
                                 @if (Request::is('homeestudiante'))
                                     style="color: var(--secondary-color);"
                                 @endif
+                                <ion-icon name="flash-off-outline"></ion-icon>
                         ></i>
                             
                         </a>
                      </li>
                      <li>
                         <a href="{{route('crearplan')}} ">
-                            <i class="fa-regular fa-lightbulb"
+                            <i 
                             @if (Request::is('crearplan'))
                                 style="color: var(--secondary-color);"
                             @endif
+                            <ion-icon name="stats-chart-outline"></ion-icon>
                             
                             ></i>
                         </a>
                      </li>
                      <li>
                         <a href="{{route('editclases')}}">
-                            <i class="fa-solid fa-pencil"
+                            <i 
                             @if (Request::is('editclases'))
                                 style="color: var(--secondary-color);"
                             @endif
+                            <ion-icon name="stats-chart-outline"></ion-icon>
                             ></i>
                         </a>
                      </li>

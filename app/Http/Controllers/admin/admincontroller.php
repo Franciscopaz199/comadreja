@@ -12,8 +12,6 @@ use App\Models\clase;
 
 class admincontroller extends Controller
 {
-   
-
     public function clasesquepuedelleva()
     {       
         // eliminar las clases que puede llevar el estudiante
@@ -28,8 +26,10 @@ class admincontroller extends Controller
         $allclases = auth()->user()->student->carrer->puente;
 
         // recorrer todas las clases de la carrera del estudiante
-        foreach ($allclases as $clase) {
-            if($this->condicion($clase)){
+        foreach ($allclases as $clase) 
+        {
+            if($this->condicion($clase))
+            {
                 auth()->user()->student->clasesdisponibles()->attach($clase->id, ['clase_id' => $clase->clase->id]);
             }
         }
@@ -39,10 +39,12 @@ class admincontroller extends Controller
     {
         if(!$this->busqueda($clase))
         {
-            foreach ($clase->requisitos as $requisito) {
+            foreach ($clase->requisitos as $requisito) 
+            {
                 $carrera = auth()->user()->student->carrer;
                 $requisito = $carrera->puente()->where('clases_id', $requisito->id)->first();
-                if(!$this->busqueda($requisito)){
+                if(!$this->busqueda($requisito))
+                {
                     return false;
                 }
             }
@@ -53,8 +55,10 @@ class admincontroller extends Controller
 
     public function busqueda($clase)
     {
-        foreach (auth()->user()->student->clases as $clasepasada) {
-            if($clasepasada->id === $clase->clase->id){
+        foreach (auth()->user()->student->clases as $clasepasada) 
+        {
+            if($clasepasada->id === $clase->clase->id)
+            {
                 return true;
             }
         }
