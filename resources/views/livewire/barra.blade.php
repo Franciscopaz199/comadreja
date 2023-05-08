@@ -49,24 +49,22 @@
         <div class="content-header">
             <div class="content-header-intro">
                 <h2>Mostrando Clases de la carrera: {{ $carrera->name }}</h2>
-                <p>Total: {{ $carrera->puente->count() }}</p>
+                <p class="informa">Total: {{ $carrera->puente->count() }}</p>
             </div>
         </div>
         <div class="content-main">
             <div class="card-grid">
                 @forelse ($carrera->puente as $puente)
-                <article class="card-m">
-                    <div class="card-header-m">
-                        <div>
-                            <h4>{{ $puente->clase->name }}</h4>
-                        </div>
-                        
+                @php
+                    $clase = $puente->clase;
+                @endphp
+                <article class="card-clase" style="margin-top: 10px;">
+                    <div class="card-informacion">  
+                        <h4 class="name">{{$clase->name}}</h4>
+                        <p>{{ $clase->codigo }}</p>            
                     </div>
-                    <div class="card-body-m">
-                        <p class="description">UV: {{$puente->clase->UV}}</p>
-                    </div>
-                    <div class="card-footer-m">
-                        <p>{{ $puente->clase->codigo }}</p>
+                    <div class="card-uv">
+                        <p class="description active">UV: {{$clase->UV}}</p>
                     </div>
                 </article>
                 @empty

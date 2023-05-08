@@ -377,13 +377,16 @@ img {
 }
 
 .content-main {
+  width: 70%;
   padding-top: 2rem;
   padding-bottom: 6rem;
   flex-grow: 1;
 }
 
 .card-grid {
-  display: grid;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   grid-template-columns: repeat(1, 1fr);
   -moz-column-gap: 1.5rem;
        column-gap: 1.5rem;
@@ -506,3 +509,109 @@ html::-webkit-scrollbar-thumb {
   border: 4px solid var(--c-background-primary);
   border-radius: 99em;
 }
+
+/*******************/
+/* 3.0 - COMPONENTS */
+/*******************/
+
+
+.periodo {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  scroll-padding: 30px;
+  background: #f1f1f1;
+  
+
+}
+.periodo .card-clase {
+  display: flex;
+  flex: 0 0 50%;
+  flex-direction: column;
+  min-width: 300px;
+  align-items: center;
+  padding: 30px;
+  border-radius: 12px;
+  background: #fff;
+  scroll-snap-align: start;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  scrollbar-color: none;
+  transition: 0.3s;
+  
+}
+
+.periodo::-webkit-scrollbar {
+  height: 7px;
+  border-radius: 10px;
+  scrollbar-width: 2px;
+  scrollbar-color: #6e93f7 #f5f5f5;
+  overflow-x: auto !important;
+
+
+}
+
+div::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  width: 5px;
+  height: 5px;
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: #6e93f7;
+  border-radius: 10px;
+}
+
+
+
+.card-informacion{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.card-informacion h3{
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--c-text-primary);
+}
+.card-informacion p{
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--c-text-secondary);
+}
+
+.card-uv{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px;
+  border-radius: 50%;
+
+  background-color: var(--c-background-quaternary);
+
+}
+
+.informa{
+  background-color: var(--c-background-quaternary);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+
+}
+
+@media screen and (max-width: 768px) {
+  .content-main{
+    width: 100%;
+  }
+}
+
+
+

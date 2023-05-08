@@ -51,7 +51,7 @@
 }
 
 .menu{
-    width: 100px;
+    min-width: 100px;
     height: calc(100vh - 7vh);
     border-right: 1px solid  #ccc;
 

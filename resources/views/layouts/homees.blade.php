@@ -16,8 +16,20 @@
 </head>
 <body>  
     <div class="contenedor-app">
-        <div class="headerpage">
+        <div class="headerpage" style="display: flex; justify-content:space-between; padding:20px 50px;">
             <h1>UNAH</h1>
+            <li class="nav-item dropdown" style="list-style: none;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{
+                    Auth::user()->name
+                  }}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">Editar Clases</a>
+                  <a class="dropdown-item" href="#">Editar Perfil</a>
+                  <a class="dropdown-item" href="{{route('logout')}}">Cerrar Sesion</a>
+                </div>
+              </li>
         </div>
         <div class="contenido-app">
             <div class="menu">
@@ -86,7 +98,8 @@
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 @yield('js')

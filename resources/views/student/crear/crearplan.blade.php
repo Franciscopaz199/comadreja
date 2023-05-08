@@ -1,6 +1,7 @@
 @extends('layouts.homees')
 @section('css')
 @livewireStyles
+<link rel="stylesheet" href={{ asset('css/components.css') }}>
 @endsection
 @section('content')
 <main class="main">

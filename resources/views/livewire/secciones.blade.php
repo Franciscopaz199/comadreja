@@ -1,7 +1,6 @@
 <div>
     <div class="main-header">
-        <p>Selecciona el modo</p>
-
+        <p>Por favor, seleccione el tipo de plan de estudio que desea generar</p>
     </div>
     <div class="horizontal-tabs">
         <a href="#" @if($status == 1) class="active" @endif  wire:click="changeStatus(1)">Automatico</a>

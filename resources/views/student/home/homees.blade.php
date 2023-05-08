@@ -4,6 +4,8 @@
     @livewireStyles
     <link rel="stylesheet" href="{{asset('css/styles-home.css')}}">
     <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css')}}">
+    
+    
 @endsection
 @section('content')
     <div class="info-user">
@@ -19,13 +21,15 @@
                             <p>{{Auth::user()->student->carrer->name}}</p>
                             <P>{{Auth::user()->student->universidad->shortname}}</P>
                         </div>
-                         <div class="puntos">
+                         <!--
+                        <div class="puntos">
                             <a href="">
                                 <div class="punto"></div>
                                 <div class="punto"></div>
                                 <div class="punto"></div>
                              </a>
                         </div>
+                        -->
                 </div>
         </div>
         <div class="estadisticas">
