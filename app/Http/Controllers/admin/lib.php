@@ -79,7 +79,7 @@ class lib extends Controller
         foreach($clases as $clase)
         {
            $this->lista_pasadas->push($clase);
-              $uv += $clase->uv;
+           $uv += $clase->UV;
         }
 
         $clases2 = [

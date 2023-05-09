@@ -100,8 +100,7 @@
         height: auto;
     }
     .lef-section{
-        width: 100%;
-        min-height: 100vh;
+        display: none;
     }
     .medio p {
         font-size: calc(1rem + 0.5vw);

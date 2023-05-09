@@ -16,28 +16,30 @@
                 </div>
             </div>
             <div class="content-main"  >
-                <div class="horizontal-tabs" style="margin-top: 0 !important; position: sticky; top:7vh; background-color:#fff;  padding:22px; ">
+                <div class="horizontal-tabs" style="margin-top: 0 !important; position: sticky; top:7vh; background-color:#fff;  padding:22px;">
+                    
                     <a href="#" class="active" >Plan de estudio</a>
                     <a href="#">Info</a>
                     <a href="#">Version plan de estudio UNAH</a>
+                    
+                    <hr>
                 </div>
-                <hr>
+                
                 <div class="card-grid" style="flex-direction: column;"> 
                     @forelse($clasesperiodo1 as $periodo)
                         <div class="content-header-intro">
                             <h2>Periodo: {{$periodo["periodo"]}}</h2>
                            <div class="" style="display: flex;">
                                 <p class="informa">clases: {{$periodo["cant"]}}  </p>
-                                <p class="informa" style="margin-left: 10px;">UV:{{$periodo["uv"]}} </p></P>
+                                <p class="informa" style="margin-left: 10px;">UV:{{$periodo["uv"]}} </p>
+                                <p class="informa" style="margin-left: 10px">20/02/2023 </p>
+
                            </div>
                         </div>
                        
                         <div class="periodo">
-                    
+                            
                             @forelse($periodo["clases"] as $clase)
-                          
-
-
                             <article class="card-clase" style="margin-top: 10px;">
                                 <div class="card-uv">
                                     <p class="description active">UV: {{$clase->UV}}</p>
@@ -66,17 +68,6 @@
         </div>
 
         <script>
-           let periodos = document.querySelectorAll(".periodo");
-
-            // agregar evento hover a cada periodo
-            periodos.forEach(periodo => {
-                periodo.addEventListener("mouseover", () => {
-                    periodo.classList.add("scroll");
-                });
-                periodo.addEventListener("mouseout", () => {
-                    periodo.classList.remove("scroll");
-                });
-            });
-
+           
         </script>
 </div>

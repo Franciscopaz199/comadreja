@@ -7,7 +7,8 @@
     <title>Maquetacion</title>
     <link rel="stylesheet" href={{ asset('css/style-homees.css') }}>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+    
+    <script src="https://kit.fontawesome.com/46c5c26f8c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href={{ asset('css/footer.css') }}>
     
     <link rel="stylesheet" href={{ asset('css/style-modern.css') }}>
@@ -36,56 +37,52 @@
                 <ul>
                     <li>
                         <a href="{{route('companeros')}}">
-                            <i
+                            <i class="fa-solid fa-users"
                                 @if (Request::is('companeros'))
                                     style="color: var(--secondary-color);"
                                 @endif
                             >
-                                <ion-icon name="people-circle-outline"></ion-icon>
                             </i>
                         </a>
                      </li>
                      <li>
                         <a href="{{route('estadisticas')}}">
-                           <i
+                            <i class="fa-solid fa-chart-line"
                             @if (Request::is('estadisticas'))
                                 style="color: var(--secondary-color);"
                              @endif
                            >
-                            <ion-icon name="stats-chart-outline"></ion-icon>
                            </i>
                             
                         </a>
                      </li>
                      <li class="inicio">
                         <a href="{{route('home')}}">
-                            <i 
+                            <i class="fa-solid fa-house"
                                 @if (Request::is('homeestudiante'))
                                     style="color: var(--secondary-color);"
                                 @endif
-                                <ion-icon name="flash-off-outline"></ion-icon>
+                               
                         ></i>
                             
                         </a>
                      </li>
                      <li>
                         <a href="{{route('crearplan')}} ">
-                            <i 
+                            <i class="fa-solid fa-screwdriver-wrench"
                             @if (Request::is('crearplan'))
                                 style="color: var(--secondary-color);"
                             @endif
-                            <ion-icon name="stats-chart-outline"></ion-icon>
                             
                             ></i>
                         </a>
                      </li>
                      <li>
                         <a href="{{route('editclases')}}">
-                            <i 
+                            <i class="fa-solid fa-pencil"
                             @if (Request::is('editclases'))
                                 style="color: var(--secondary-color);"
                             @endif
-                            <ion-icon name="stats-chart-outline"></ion-icon>
                             ></i>
                         </a>
                      </li>

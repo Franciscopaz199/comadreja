@@ -8,7 +8,7 @@
 :root {
    --principal-color: white; 
    --secondary-color: #FCC509;
-   --tertiary-color: #043057;
+   --tertiary-color: #043c6d;
    --quaternary-color: #d6d6d6;
 
 }
@@ -99,6 +99,7 @@
 @media screen and (max-width: 768px) {
    
     .contenido-app{
+        width: 100%;
         flex-direction: column-reverse;
    
     }
