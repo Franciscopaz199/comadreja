@@ -2,6 +2,7 @@
 @section('css')
 @livewireStyles
 <link rel="stylesheet" href={{ asset('css/components.css') }}>
+<link rel="stylesheet" href={{ asset('css/estilosPlanDS.css') }}>
 @endsection
 @section('content')
 <main class="main">
@@ -19,5 +20,6 @@
 @endsection
 @section('scripts')
 <script src="{{ asset('js/interactions.js') }}"></script>
+<script src="{{ asset('js/plandeestudios.js') }}"></script>
 @endsection
 

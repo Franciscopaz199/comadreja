@@ -18,6 +18,10 @@ body {
   background-color: var(--c-background-secondary);
   color: var(--c-text-primary);
 }
+a:focus, a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
 
 img {
   display: block;

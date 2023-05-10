@@ -19,7 +19,8 @@ class lib extends Controller
     public $lista = [];
     public $lista_pasadas;
     public $clases_carrera = [];
-
+    public $cantperiodos;
+  
 
     // funcion para obtener el plan de estudio del estudiante
     public function get_plan_estudio($cant)
@@ -37,6 +38,7 @@ class lib extends Controller
         {
             array_push($this->lista, $this->obtener_clases_periodo());
         }
+        
     }
 
     private function obtener_clases_periodo()
@@ -64,8 +66,16 @@ class lib extends Controller
                 // si se cumple la condicion, se agrega la clase a la lista
                 if($condicion)
                 {
-                
-                    array_push($clases, $puente->clase);
+                    $uv += $puente->clase->UV;
+                    if($uv <= 25)
+                    {
+                        array_push($clases, $puente);
+                    }
+                    else
+                    {
+                        $uv -= $puente->clase->UV;
+                        break;
+                    }
                 }
             }
 
@@ -78,12 +88,12 @@ class lib extends Controller
 
         foreach($clases as $clase)
         {
-           $this->lista_pasadas->push($clase);
-           $uv += $clase->UV;
+           $this->lista_pasadas->push($clase->clase);
+           
         }
 
         $clases2 = [
-            'periodo' =>  count($this->lista),
+            'periodo' =>  count($this->lista) + 1,
             'clases' => $clases,
             'uv' => $uv,
             'cant' => count($clases),

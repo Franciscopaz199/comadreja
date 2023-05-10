@@ -25,6 +25,7 @@
                  <div class="title">
                     <b><h4>Iniciar Sesion</h4></b>
                     @if ($errors->any())
+                    
                         <div class="alert alert-danger">
                             <p>Sesion no Iniciada</p>
                             <ul>
@@ -32,6 +33,7 @@
                                     <li>{{$errors}}</li>
                                 @endforeach
                             </ul>
+                           
                         </div>
                     @endif
                     <p>Por favor inicia sesion con tu usuario y contraseña</p>

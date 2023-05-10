@@ -20,7 +20,7 @@
     background-color: var(--principal-color);
 }
 .contenido{
-    width: 100%;
+    width: calc(100% - 100px);
 }
 
 .headerpage{
@@ -83,7 +83,7 @@
     margin-top: 50px;
 }
 .menu ul li a i{
-    font-size: 23px;
+    font-size: 18px;
     color: var(--tertiary-color);
 }
 
@@ -101,7 +101,9 @@
     .contenido-app{
         width: 100%;
         flex-direction: column-reverse;
-   
+    }
+    .contenido{
+        width: 100%;
     }
     .menu{
         min-width: 100%;

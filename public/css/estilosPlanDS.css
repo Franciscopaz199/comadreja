@@ -1,0 +1,150 @@
+.container-periodo{
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.plandeestudio{
+    width: 95%;
+    height: 96%;
+    background-color: var(--principal-color);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    overflow-y: scroll;
+    
+}
+.plan-content{
+    width: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 90vh;
+}
+.linea-cerrar{
+    width: 100%;
+    height:  1vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.linea-cerrar i{
+    border-radius: 50%;
+    font-size: 2rem;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.linea-cerrar i:hover{
+    color: red;
+}
+
+/************************************************************/
+/* estilos para la tabla de plan de estudio */
+/************************************************************/
+.cuadro-periodo{
+    border-right: 1px solid rgb(198, 198, 198);
+    max-width: 400px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.linea-anio{
+    width: 70%;
+    height: 20px;
+    display: flex;
+}   
+
+.linea-amarilla{
+    width: 50%;
+    background-color: rgb(249, 169, 27);
+  
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.info-per {
+    color: white;
+    font-size: 10px;
+    margin-bottom: 0px !important;
+}
+
+.linea-azul{
+    width: 50%;
+    background-color: rgb(5, 5, 91);
+}
+.descripcion{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.info-clase{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.table-plan {
+    font-size: 10px;
+}
+.codigo-container{
+    width: 40px;
+    border: none; /* Elimina el borde del input */
+    background-color: transparent; /* Establece el fondo transparente */
+    font-size: inherit; /* Usa el tamaño de fuente heredado */
+    font-family: inherit; /* Usa la familia de fuentes heredada */
+    color: inherit; /* Usa el color de fuente heredado */
+    padding: 0; /* Elimina el padding */
+    outline: none; /* Elimina el outline */
+    cursor: pointer; /* Deshabilita el cursor */
+
+    /*desavilitar que se pueda escribir en el input*/
+  
+}
+
+/******************** screen querys *************************/
+@media screen and (max-width: 1024px){
+    .plandeestudio{
+        padding: 0 1rem;
+    }
+    .linea-cerrar{
+        height: 10vh;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: #fff;
+        margin-top: 0;
+    }
+    .linea-cerrar i{
+        font-size: 1.5rem;
+    }
+
+    .plan-content{
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .cuadro-periodo{
+        max-width: 100%;
+        min-width: 100%;
+        width: 100%;
+        border-right: none;
+
+    }
+}
