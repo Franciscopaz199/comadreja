@@ -39,9 +39,7 @@
     z-index: 100;
 }
 
-.headerpage h1{
-    font-weight: 1;
-}
+
 .contenido-app{
     width: 100%;
     min-height: calc(93vh);
@@ -81,15 +79,19 @@
     align-items: center;
 
     margin-top: 50px;
+
 }
+
+
 .menu ul li a i{
-    font-size: 18px;
     color: var(--tertiary-color);
 }
 
 .menu ul li a i:hover{
     color: var(--secondary-color);
+    font-size: 1.5rem;
 }
+
 
 
 

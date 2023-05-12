@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 item">
-                    <h3>{{ config('app.name', 'ClassAssistan') }}</h3>
+                    <h3>{{ config('app.name', '') }}</h3>
                 </div>
                 <div class="col-sm-4 col-md-3 item">
                     <h3>Acerca de</h3>

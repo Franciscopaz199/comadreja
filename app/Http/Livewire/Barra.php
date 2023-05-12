@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class Barra extends Component
 {
-
     public $status = 1;
     public $carrera = [];
 
@@ -19,6 +18,9 @@ class Barra extends Component
     {
         $this->status = $id;
     }
+
+  
+   
 
 
     

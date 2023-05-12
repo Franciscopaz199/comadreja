@@ -126,8 +126,10 @@ class studentController extends Controller
         {
             return redirect()->route('selectclases');
         }
+        
         $clases = auth()->user()->student->clasesdisponibles;
         $UV = 0;
+
         foreach ($clases as $clase) {
             $UV = $UV + $clase->UV;
         }
@@ -170,8 +172,8 @@ class studentController extends Controller
             'carrera' => auth()->user()->student->carrer,
             'clases' => $clases,
             'UV' => $UV,
-            'totalUVcarrera' => $totalUV
-
+            'totalUVcarrera' => $totalUV,
+            'cantidadclases' => auth()->user()->student->clasesdisponibles->count(),
         ]);
     }
 

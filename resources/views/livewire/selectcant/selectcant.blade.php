@@ -7,22 +7,24 @@
 
     </div>
     <div class="container-clases-periodo">
-        <table class="table">
-            <thead>
-        @forelse ($clasesperiodo1  as $materia)
-              <tr style="box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;">
-                 <th > {{$materia->clase->name}}</th>
-                 <th> prioridad: {{$materia->prioridad}}</th>
-              </tr>
-        @empty
+        <div class="periodo">
+            @forelse($clasesperiodo1 as $clase)
+            @php
+                $clase = $clase->clase;
+            @endphp
+            <article class="card-clase" style="margin-top: 10px;">
+                <div class="card-uv">
+                    <p class="description active">UV: {{$clase->UV}}</p>
+                </div>
+                <div class="card-informacion">  
+                    <h4 class="name" style="text-align: center;">{{$clase->name}}</h4>
+                    <p>{{ $clase->codigo }}</p>            
+                </div>
+                
+            </article>
+            @empty
             <p>No has seleccionado nada</p>
-        @endforelse
-    </thead>
-    <tbody>
-      <tr>
-        
-      </tr>
-    </tbody>
-  </table>
+            @endforelse
+        </div>
     </div>
 </div>

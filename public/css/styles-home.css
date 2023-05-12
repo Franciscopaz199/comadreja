@@ -1,9 +1,7 @@
 
 .container-clases-periodo{
     width: 100%;
-    max-height: 200px;
     display: flex;
-    overflow-y: scroll;
     box-sizing: border-box;
     padding: 20px;
 }
@@ -222,7 +220,7 @@
   background: #265DF2;
 }
 .swiper{
-    padding: 50px !important;
+    padding: 5px !important;
 }
 .slide-content{
   width: 100%;

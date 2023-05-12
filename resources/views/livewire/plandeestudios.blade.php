@@ -33,19 +33,17 @@
 
                         <div class="content-header-intro">
                             <h2>Periodo: {{$periodo["periodo"]}}</h2>
-                        <div class="" style="display: flex;">
+                        <div class="" style="display: flex; overflow-x: auto; width: 100%; margin-top: 10px; margin-bottom: 10px;">
                                 <p class="informa">clases: {{$periodo["cant"]}}  </p>
                                 <p class="informa" style="margin-left: 10px;">UV:{{$periodo["uv"]}} </p>
-                                <p class="informa" style="margin-left: 10px">20/02/2023 </p>
+                                <p class="informa" style="margin-left: 10px">Promedio Min: {{$periodo["promedio"]}} </p>
+                                <p class="informa" style="margin-left: 10px">Año: {{$periodo["anio"]}} </p>
+                                
 
                         </div>
                         </div>
                     
                         <div class="periodo">
-                            
-
-
-
                             @forelse($periodo["clases"] as $clase)
                             @php
                                 $clase = $clase->clase;
@@ -55,7 +53,7 @@
                                     <p class="description active">UV: {{$clase->UV}}</p>
                                 </div>
                                 <div class="card-informacion">  
-                                    <h4 class="name">{{$clase->name}}</h4>
+                                    <h4 class="name" style="text-align: center;">{{$clase->name}}</h4>
                                     <p>{{ $clase->codigo }}</p>            
                                 </div>
                                 
@@ -83,24 +81,28 @@
                         </tr>
                         <tr>
                           <th>Clases Restantes:</th>
-                          <td>Descripción de Paco</td>
+                          <td>
+                            {{$clases_restantes}}
+                          </td>
                         </tr>
                         <tr>
                           <th>UV restantes:</th>
-                          <td>2023</td>
+                          <td>{{$totalUV}}</td>
                         </tr>
+                        
                         <tr>
-                            <th>Promedio para llevar este plan:</th>
-                            <td>2023</td>
-                        </tr>
-                        <tr>
-                            <th>Fecha Salida con este plan :</th>
-                            <td>I PAC 2022</td>
+                            <th>Periodo aproximado de salida con este plan :</th>
+                            <td>{{$salida}}</td>
                         </tr>
                         <tr>
                             <th>Fecha en la que se creo el plan:</th>
-                            <td>I PAC 2022</td>
+                            <td>{{$fechaactual}}</td>
                         </tr>
+                        <tr>
+                            <th>Restante:</th>
+                            <td>{{$restantes}}</td>
+                        </tr>
+
                        
                       </tbody>
                     </table>
@@ -193,7 +195,7 @@
                 element.addEventListener('mouseover', function() {
                     var id = element.value;
                     var clase = document.getElementById(id);
-                    clase.style.backgroundColor = '#f5f5f5';
+                    clase.style.backgroundColor = '#f2f2f2';
                 });
                 element.addEventListener('mouseout', function() {
                     var id = element.value;

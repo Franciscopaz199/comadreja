@@ -10,10 +10,7 @@
 @section('content')
     <div class="info-user">
         <div class="informacion-usuario">
-                <div class="cuadro">
-                    <div class="cuadro2" style="width: 100%;">
-                    </div>
-                </div>  
+                 
                 <div class="div">
                         <img src="{{asset('storage/imagenes/perfil.jpg')}}" alt="">
                         <div class="info">
@@ -63,12 +60,24 @@
         </div>  
     </div>
     <div class="muestra-informacion-principal">
-       <div class="contenido-aplicacion">
-        <div class="content-header-intro">
-            <h1>Siguiente periodo</h1>
-            <p>Supercharge your workflow and connect the tool you use every day.</p>
-        </div>
-       </div>
+            <div class="contenido-aplicacion">
+                <div class="conta">
+                    <div class="main-header" style="display: flex; flex-direction:column; align-items: flex-start;">
+                       <h2>Siguiente Periodo</h2>      
+                    </div>
+                    <div class="main-header">
+                        <p>Esto es lo que tienes para el siguiente periodo</p>
+                    </div>
+                    
+                </div>
+                <div class="content-header-intro">
+                <div class="" style="display: flex; overflow-x: auto; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+                        <p class="informa">clases:{{$cantidadclases}} </p>
+                        <p class="informa" style="margin-left: 10px;">UV:{{$UV}} </p>
+                </div>
+                </div>
+                <hr>
+            </div>
             <div class="contenedor-clases-info">
                 <div class="clases-proximo-periodo">
                     <div class="slide-container swiper">
@@ -106,22 +115,26 @@
                     </div>
                     </div>
                 </div>
-        <hr>
+       
         <div class="contenido-aplicacion">
             <h2>Necesitas Ayuda?</h2>
-            <p>No sabes que clases sacar el proximo periodo?
-                 Selecciona la cantidad de clases y nuestro algoritmo se encargara de decidir que Clases
-                sacar por ti
+            <p>No sabes que clases sacar el proximo periodo selecciona la cantidad de clases
+                o tambien genera un horario automatico <a href="{{route('crearplan')}}">Ir al plan</a>
+
             </p>
         </div>
-        <hr>
         @livewire('selectcant' )
+
+
+<!--
         <div class="articulo-censo">
             <center><h4>Artículo 211.</h4></center>
             <p>"El estudiante, en forma obligatoria, dará a conocer a la institución sus necesidades de horarios de asignaturas o experiencias educativas.
                 Será responsabilidad de los jefes de departamento en asamblea docente y previa consulta con los coordinadores de carrera
             <a href="">ver mas...</a></p>
         </div>
+    -->
+
         <x-footer/>
     </div>
 @endsection
