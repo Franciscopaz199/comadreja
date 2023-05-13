@@ -113,58 +113,60 @@
                             <div class="linea-cerrar">
                                 <i class="fa-regular fa-circle-xmark"  wire:click="setopcion(1)"  id="activar" ></i>
                             </div>
-                            <div class="plan-content">
-                                @foreach($periodo2 as $periodo)
-                                    <div class="cuadro-periodo">
-                                        <div class="linea-anio">
-                                            <div class="linea-amarilla">
-                                                <p class="info-per">Periodo {{$periodo["periodo"]}}</p>
-                                            </div>
-                                            @if(($periodo["periodo"] - 1) % 3 == 0)
-                                                <div class="linea-azul">
-                                                    <p class="info-per">Anio: {{(($periodo["periodo"]) % 3 )+1}}</p>
-                                                </div>
-                                            @endif
-                                        </div>
-
-                                        <table class="table table-plan">
-                                            <thead>
-                                              <tr>
-                                                <th scope="col">Codigo</th>
-                                                <th scope="col">asignatura</th>
-                                                <th scope="col">UV</th>
-                                                <th scope="col">Requisito</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                                @forelse($periodo["clases"] as $puente)
-                                                <tr id="{{$puente->clase->codigo}}">
-                                                    <th scope="row">{{ $puente->clase->codigo }}</th>
-                                                    <td>{{ $puente->clase->name }}</td>
-                                                    <td>{{$puente->clase->UV}}</td>
-                                                    <td >
-                                                        <div class="div" style="display: flex;">
-
-                                                        
-                                                            @forelse($puente->requisitos as $requisito)
-                                                                <input type="text" value="{{$requisito->codigo}}" name="requisi" id="r{{$requisito->codigo}}" class="codigo-container" readonly/> , 
-                                                            @empty
-                                                                Ninguno
-                                                            @endforelse
-                                                        </div>
-                                                    </td>
-                                                  </tr>
-                                                @empty
-                                                    <div class="card">
-                                                        <h3>Nada disponible para mostrar</h3>
+                            <div class="contenedor-plan">
+                                    <div class="plan-content">
+                                        @foreach($periodo2 as $periodo)
+                                            <div class="cuadro-periodo">
+                                                <div class="linea-anio">
+                                                    <div class="linea-amarilla">
+                                                        <p class="info-per">Periodo {{$periodo["periodo"]}}</p>
                                                     </div>
-                                                @endforelse
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                @endforeach
-                            
-                        </div>
+                                                    @if(($periodo["periodo"] - 1) % 3 == 0)
+                                                        <div class="linea-azul">
+                                                            <p class="info-per">Anio: {{(($periodo["periodo"]) % 3 )+1}}</p>
+                                                        </div>
+                                                    @endif
+                                                </div>
+        
+                                                <table class="table table-plan">
+                                                    <thead>
+                                                    <tr>
+                                                        <th scope="col">Codigo</th>
+                                                        <th scope="col">asignatura</th>
+                                                        <th scope="col">UV</th>
+                                                        <th scope="col">Requisito</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @forelse($periodo["clases"] as $puente)
+                                                        <tr id="{{$puente->clase->codigo}}" style="border-style:none;">
+                                                            <th scope="row">{{ $puente->clase->codigo }}</th>
+                                                            <td>{{ $puente->clase->name }}</td>
+                                                            <td>{{$puente->clase->UV}}</td>
+                                                            <td >
+                                                                <div class="div" style="display: flex;">
+        
+                                                                
+                                                                    @forelse($puente->requisitos as $requisito)
+                                                                        <input type="text" value="{{$requisito->codigo}}" name="requisi" id="r{{$requisito->codigo}}" class="codigo-container" readonly/> , 
+                                                                    @empty
+                                                                        Ninguno
+                                                                    @endforelse
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        @empty
+                                                            <div class="card">
+                                                                <h3>Nada disponible para mostrar</h3>
+                                                            </div>
+                                                        @endforelse
+                                                    </tbody>
+                                                </table>
+                                                </div>
+                                        @endforeach
+                                    
+                                </div>
+                            </div>
                   </div>
                   <!-- este script es para que cuando se abra el modal se desactive el scroll -->
                   <script>
@@ -172,10 +174,6 @@
                         activar.addEventListener('click', function() {
                         document.body.style.overflow = 'auto';
                     });
-                    var desactivar = document.getElementById('desactivar');
-                        desactivar.addEventListener('click', function() {
-                                    document.body.style.overflow = 'hidden';
-                                });
                 
                   </script>
                  
@@ -203,6 +201,11 @@
                     clase.style.backgroundColor = '#fff';
                 });
             });
+
+            var desactivar = document.getElementById('desactivar');
+                        desactivar.addEventListener('click', function() {
+                                    document.body.style.overflow = 'hidden';
+                                });
             
         </script>
       

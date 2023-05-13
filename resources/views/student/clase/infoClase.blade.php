@@ -142,6 +142,7 @@
                 <a href="#" class="active">Participantes</a>
                 <a href="#">Periodos disponibles</a>
                 <a href="#">Importancia</a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">horarios</a>
             </div>
         </div>
         <div class="info-apli">

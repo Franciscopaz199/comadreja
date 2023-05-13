@@ -16,7 +16,13 @@
                 <p>Se generara un plan de estudio manualmente</p>
             </div>
         </div>-->
-        <hr>
+       
+        <div class="content-header">
+            <div class="content-header-intro">
+                <h2>Generando plan de estudio Manualmente</h2>
+                <p>Info Una Herramienta donde podras crear un plan de estudio que mas se adapte a tus necesidades</p>
+            </div>
+        </div>
         <div class="content" style="border:  1px dashed #ccc; 
             display: flex;
             justify-content: center;
@@ -27,6 +33,8 @@
             padding: 40px;
             "
         >
+            
+
             <h2
                 style="text-align: center;
                 font-size: 20px;
