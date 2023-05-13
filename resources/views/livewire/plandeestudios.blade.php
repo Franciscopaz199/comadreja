@@ -1,5 +1,4 @@
 <div>
-    
     <div class="content-header">
         <div class="content-header-intro">
             <h2>Generando plan de estudio automaticamente</h2>
@@ -18,31 +17,22 @@
             </div>
             <div class="content-main"  >
                 <div class="horizontal-tabs" style="margin-top: 0 !important; position: sticky; top:7vh; background-color:#fff;  padding:22px;">
-                    
                     <a  @if($opcion ==  1) class="active" @endif wire:click="setopcion(1)">Plan de estudio</a>
                     <a  @if($opcion ==  2) class="active" @endif wire:click="setopcion(2)">Informacion</a>
                     <a  @if($opcion ==  3) class="active" @endif wire:click="openModal" id="desactivar">UNAHversion</a>
-                    
-                    
-                    
                 </div>
-                
                 <div class="card-grid" style="flex-direction: column;"> 
                     @if($opcion == 1 )
                         @forelse($clasesperiodo1 as $periodo)
-
                         <div class="content-header-intro">
                             <h2>Periodo: {{$periodo["periodo"]}}</h2>
-                        <div class="" style="display: flex; overflow-x: auto; width: 100%; margin-top: 10px; margin-bottom: 10px;">
-                                <p class="informa">clases: {{$periodo["cant"]}}  </p>
-                                <p class="informa" style="margin-left: 10px;">UV:{{$periodo["uv"]}} </p>
-                                <p class="informa" style="margin-left: 10px">Promedio Min: {{$periodo["promedio"]}} </p>
-                                <p class="informa" style="margin-left: 10px">Año: {{$periodo["anio"]}} </p>
-                                
-
+                            <div class="" style="display: flex; overflow-x: auto; width: 100%; margin-top: 10px; margin-bottom: 10px;">
+                                    <p class="informa">clases: {{$periodo["cant"]}}  </p>
+                                    <p class="informa" style="margin-left: 10px;">UV:{{$periodo["uv"]}} </p>
+                                    <p class="informa" style="margin-left: 10px">Promedio Min: {{$periodo["promedio"]}} </p>
+                                    <p class="informa" style="margin-left: 10px">Año: {{$periodo["anio"]}} </p>
+                            </div>
                         </div>
-                        </div>
-                    
                         <div class="periodo">
                             @forelse($periodo["clases"] as $clase)
                             @php
@@ -56,7 +46,6 @@
                                     <h4 class="name" style="text-align: center;">{{$clase->name}}</h4>
                                     <p>{{ $clase->codigo }}</p>            
                                 </div>
-                                
                             </article>
                             @empty
                             <div class="card">
@@ -64,13 +53,11 @@
                             </div>
                             @endforelse
                         </div>
-                
                     @empty
                         <div class="card">
                             <h3>Nada disponible para mostrar</h3>
                         </div>
                     @endforelse
-
                 @elseif($opcion == 2)
                 <div class="container">
                     <table class="table">
@@ -89,7 +76,6 @@
                           <th>UV restantes:</th>
                           <td>{{$totalUV}}</td>
                         </tr>
-                        
                         <tr>
                             <th>Periodo aproximado de salida con este plan :</th>
                             <td>{{$salida}}</td>
@@ -102,13 +88,11 @@
                             <th>Restante:</th>
                             <td>{{$restantes}}</td>
                         </tr>
-
-                       
                       </tbody>
                     </table>
                   </div>
                 @elseif($opcion == 3)
-                  <div  class="container-periodo">
+                  <div class="container-periodo">
                         <div class="plandeestudio">
                             <div class="linea-cerrar">
                                 <i class="fa-regular fa-circle-xmark"  wire:click="setopcion(1)"  id="activar" ></i>
@@ -127,7 +111,6 @@
                                                         </div>
                                                     @endif
                                                 </div>
-        
                                                 <table class="table table-plan">
                                                     <thead>
                                                     <tr>
@@ -145,8 +128,6 @@
                                                             <td>{{$puente->clase->UV}}</td>
                                                             <td >
                                                                 <div class="div" style="display: flex;">
-        
-                                                                
                                                                     @forelse($puente->requisitos as $requisito)
                                                                         <input type="text" value="{{$requisito->codigo}}" name="requisi" id="r{{$requisito->codigo}}" class="codigo-container" readonly/> , 
                                                                     @empty
@@ -163,29 +144,22 @@
                                                     </tbody>
                                                 </table>
                                                 </div>
-                                        @endforeach
-                                    
+                                        @endforeach   
                                 </div>
                             </div>
                   </div>
                   <!-- este script es para que cuando se abra el modal se desactive el scroll -->
                   <script>
-                                    var activar = document.getElementById('activar');
+                    var activar = document.getElementById('activar');
                         activar.addEventListener('click', function() {
                         document.body.style.overflow = 'auto';
                     });
-                
                   </script>
-                 
                 @endif
-                    
                 </div>
             </div>
         </div>
-
         <script>
-            
-
             // seleccionar todos los input de con el nombre requisi y ponerlos en un array para agregarles el evento de que se pone el mouse encima
             var requisitos = document.getElementsByName('requisi');
             var requisitosArray = Array.from(requisitos);
@@ -201,12 +175,9 @@
                     clase.style.backgroundColor = '#fff';
                 });
             });
-
             var desactivar = document.getElementById('desactivar');
-                        desactivar.addEventListener('click', function() {
+                    desactivar.addEventListener('click', function() {
                                     document.body.style.overflow = 'hidden';
-                                });
-            
+                    });
         </script>
-      
 </div>
