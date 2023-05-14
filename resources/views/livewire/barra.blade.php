@@ -2,7 +2,6 @@
     <div class="conta">
         <div class="main-header" style="display: flex; flex-direction:column; align-items: flex-start;">
             <h3>{{auth()->user()->student->universidad->shortname}}</h3>  
-            <h3>{{auth()->user()->student->universidad->name}}</h3>           
         </div>
         <div class="main-header">
             <h1>{{ $carrera->name }}</h1>
@@ -17,27 +16,55 @@
     @if($status == 1)
     <div class="content-header">
         <div class="content-header-intro">
-            <h2>Mostrando participantes de la carrera: {{ $carrera->students->count() }}</h2>
+            <h2>Participantes de la carrera: {{ $carrera->name }}</h2>
             <p>Estos son los participantes de la carrera</p>
         </div>
     </div>
     <div class="content" style="display: flex; flex-direction:column;">
-            @forelse ($carrera->students as $estudiante)
-                @component('components.user', ['user' => $estudiante])
-                @endcomponent
-            @empty
-                <div class="content-header">
-                    <div class="content-header-intro">
-                        <h2>No hay estudiantes en esta carrera</h2>
-                        <p>Por favor, intente mas tarde</p>
-                    </div>
-                </div>
-            @endforelse   
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Carrera</th>
+                        <th>Centro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($carrera->students as $estudiante)
+                        <tr>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td style="display: flex; align-items: center;">
+                                <div class="container d-flex align-items-center">
+                                    <div class="icon">
+                                        <ion-icon name="person-outline" class="icono-user"></ion-icon>
+                                    </div>
+                                    {{ $estudiante->usuario->name }}
+                               </div>
+                            </td>
+                            <td>{{ $estudiante->carrer->name }}</td>
+                            <td>{{ $estudiante->universidad->shortname }}</td>
+                        </tr>
+                    @empty
+                        <div class="content-header">
+                            <div class="content-header-intro">
+                                <h2>No hay estudiantes en esta carrera</h2>
+                                <p>Por favor, intente mas tarde</p>
+                            </div>
+                        </div>
+                    @endforelse   
+                </tbody>
+            </table>
+
+
+            
     </div>
     @elseif($status == 2)
         <div class="content-header">
             <div class="content-header-intro">
-                <p>Esta es la informacion de la carrera</p>
+                <h2>Info: {{ $carrera->name }}</h2>
+                <p> Estas son algunas de las caracteristicas de la carrera</p>
             </div>
         </div>
         <div class="container">
@@ -46,7 +73,6 @@
                   <tr>
                     <th>Total Clases:</th>
                     <td> {{ $carrera->puente->count() }}</td>
-                   
                   </tr>
                   <tr>
                     <th>Total UV:</th>
@@ -56,6 +82,18 @@
                     <th>Total companeros:</th>
                     <td> {{ $carrera->students->count() }}</td>
                   </tr>
+                    <tr>
+                        <th>Universidades donde esta esta carrera:</th>
+                        <td style="display: flex; flex-direction:column;"> 
+                            @foreach ($carrera->unis as $uni)
+                                <P>{{ $uni->shortname }} </P>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Periodos en plan de estudio:</th>
+                        <td>H</td>
+                    </tr>
                 </tbody>
               </table>
         </div>
@@ -64,58 +102,42 @@
     @else
         <div class="content-header">
             <div class="content-header-intro">
-                <h2>Mostrando Clases de la carrera: {{ $carrera->name }}</h2>
-                <p class="informa">Total: {{ $carrera->puente->count() }}</p>
+                <h2>Clases de la carrera: {{ $carrera->name }}</h2>
+                <p >Total: {{ $carrera->puente->count() }}</p>
             </div>
         </div>
-        <div class="content-main" 
-            style="
-                width: 100% !important;
-            "
-        >
-            <div class="card-grid"
-                style=" 
-                width: 100% !important;
-                    display: grid !important;
-                    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;" 
-            >
-                @forelse ($carrera->puente as $puente)
-                @php
-                    $clase = $puente->clase;
-                @endphp
-                <article class="card-clase" style="margin-top: 10px;
-                      background-color: var(--c-background-primary) !important;
-                        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.05), 0 5px 15px 0 rgba(0, 0, 0, 0.05) !important;
-                        border-radius: 8px !important;
-                        overflow: hidden !important;
-                        display: flex !important;
-                        flex-direction: column !important;
-                        box-sizing: border-box !important;
-                        transition: all 0.3s ease-in-out !important;
-                        padding: 30px !important;
-                ">
-                    <div class="card-informacion">  
-                       
-                        <p>{{ $clase->codigo }}</p>            
-                        <h4 class="name">{{$clase->name}}</h4>
-                    </div>
-                    <div class="card-uv"
-                        style="
-                            background-color: #fff !important;
-                        "
-                    >
-                        <p class="description active">UV: {{$clase->UV}}</p>
-                    </div>
-                </article>
-                @empty
-                    <div class="content-header">
-                        <div class="content-header-intro">
-                            <h2>No hay clases en esta carrera</h2>
-                            <p>Por favor, intente mas tarde</p>
+        <div class="content">
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre</th>
+                        <th>Codigo</th>
+                        <th>UV</th>
+                        <th>Departamento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($carrera->puente as $clase)
+                        <tr>
+                            <td>{{ $loop->index + 1 }}</td>
+                            <td>{{ $clase->clase->name }}</td>
+                            <td>{{ $clase->clase->codigo }}</td>
+                            <td>{{ $clase->clase->UV }}</td>
+                            <td>{{ $clase->clase->departa->name }}</td>
+                            
+                        </tr>
+                    @empty
+                        <div class="content-header">
+                            <div class="content-header-intro">
+                                <h2>No hay clases en esta carrera</h2>
+                                <p>Por favor, intente mas tarde</p>
+                            </div>
                         </div>
-                    </div>
-                @endforelse
-            </div>
+                    @endforelse   
+                </tbody>
+
+            </table>
         </div>
 
     @endif

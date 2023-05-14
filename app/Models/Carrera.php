@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Uni;
+
 class Carrera extends Model
 {
 	use HasFactory;
@@ -35,4 +37,18 @@ class Carrera extends Model
     {
         return $this->hasMany('App\Models\puente', 'career_id', 'id');
     }
+
+    // hacer la relacion para recuperar las universidades en donde se imparte la carrera
+    public function unis()
+    {
+        return $this->belongsToMany(Uni::class, 'unihascarreras', 'career_id', 'university_id');
+    }
+
+
+    /*
+         public function carreras()
+    {
+        return $this->belongsToMany(Carrera::class, 'unihascarreras', 'university_id', 'career_id');
+    }
+    */
 }
