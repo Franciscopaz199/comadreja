@@ -21,7 +21,7 @@ class Carreras extends Component
 	use WithFileUploads;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $shortname, $status, $logo, $description, $color1, $color2, $color3, $facultad;
+    public $selected_id, $keyWord, $name, $shortname, $status, $logo, $description, $color1, $color2, $color3, $facultad, $periodos;
     public $updateMode = false;
 
     public function render()
@@ -58,6 +58,7 @@ class Carreras extends Component
 		$this->status = null;
 		$this->logo = null;
 		$this->description = null;
+		$this->periodos = null;
 		$this->color1 = null;
 		$this->color2 = null;
 		$this->color3 = null;
@@ -72,6 +73,7 @@ class Carreras extends Component
 		'status' => 'required',
 		'logo' => 'required',
 		'description' => 'required',
+		'periodos' => 'required',
 		'color1' => 'required',
 		'color2' => 'required',
 		'color3' => 'required',
@@ -89,6 +91,7 @@ class Carreras extends Component
 			'status' => $this-> status,
 			'logo' => $url,
 			'description' => $this-> description,
+			'periodos' => $this->periodos,
 			'color1' => $this-> color1,
 			'color2' => $this-> color2,
 			'color3' => $this-> color3,
@@ -114,6 +117,7 @@ class Carreras extends Component
 		$this->color2 = $record-> color2;
 		$this->color3 = $record-> color3;
 		$this->facultad = $record-> facultad;
+		$this->periodos = $record-> periodos;
 		
         $this->updateMode = true;
     }
@@ -126,6 +130,7 @@ class Carreras extends Component
 		'status' => 'required',
 		'logo' => 'required',
 		'description' => 'required',
+		'periodos' => 'required',
 		'color1' => 'required',
 		'color2' => 'required',
 		'color3' => 'required',
@@ -140,6 +145,7 @@ class Carreras extends Component
 			'status' => $this-> status,
 			'logo' => $this-> logo,
 			'description' => $this-> description,
+			'periodos' => $this->periodos,
 			'color1' => $this-> color1,
 			'color2' => $this-> color2,
 			'color3' => $this-> color3,

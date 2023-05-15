@@ -33,11 +33,10 @@ class lib extends Controller
         $this->cant = $cant;
         $this->anio = date('Y');
         $this->periodo = (date('m') % 4) + 1;
-
         return $this->bucle();
     }
 
-    private function bucle()
+    public function bucle()
     {
 
         while(count($this->lista_pasadas) < count($this->clases_carrera))
@@ -50,14 +49,10 @@ class lib extends Controller
             'cant' => count($this->periodos),
             'UV' => $this->UVrestantes,
         ];
-
-
         return $enviar;
-
-        
     }
 
-    private function obtener_clases_periodo()
+    public function obtener_clases_periodo($clases = [])
     {
         // lista de clases que puede sacar el estudiante en el periodo actual
         $clases = [];
@@ -122,7 +117,7 @@ class lib extends Controller
     }
     
     // esta funcion comprueba si el estudiante ya ha pasado la clase
-    private function comprobar_clase($clase)
+    public function comprobar_clase($clase)
     {
         // recorrer las clases que ha pasado el estudiante
         foreach($this->lista_pasadas as $clase_pasada)
@@ -160,6 +155,7 @@ class lib extends Controller
             return '90%'; // - 100%
         }
     }   
+
 
     public function get_periodo()
     {

@@ -32,6 +32,10 @@
                 <input wire:model="description" type="text" class="form-control" id="description" placeholder="Description">@error('description') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>
             <div class="form-group">
+                <label for="periodos">Periodos</label>
+                <input wire:model="periodos" type="number" class="form-control" id="periodos" placeholder="Periodos">@error('periodos') <span class="error text-danger">{{ $message }}</span> @enderror
+            </div>
+            <div class="form-group">
                 <label for="color1"></label>
                 <input wire:model="color1" type="text" class="form-control" id="color1" placeholder="Color1">@error('color1') <span class="error text-danger">{{ $message }}</span> @enderror
             </div>

@@ -1,5 +1,6 @@
 @extends('layouts.homees')
 @section('css')
+
 @livewireStyles
 @endsection
 @section('content')

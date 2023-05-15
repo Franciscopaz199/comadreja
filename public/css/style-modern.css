@@ -574,11 +574,18 @@ div::-webkit-scrollbar-thumb {
   background-color: var(--c-background-quaternary);
   
 }
-
+.container-informa{
+  display: flex; 
+  overflow-x: auto; 
+  width: 100%; 
+  margin-top: 10px; 
+  margin-bottom: 10px;
+}
 .informa{
   background-color: var(--c-background-quaternary);
   border-radius: 8px;
   padding: 0.5rem 1rem;
+  margin-left: 10px;
 
 }
 

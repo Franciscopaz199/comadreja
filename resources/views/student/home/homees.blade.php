@@ -61,6 +61,7 @@
     </div>
     <div class="muestra-informacion-principal">
             <div class="contenido-aplicacion">
+                
                 <div class="conta">
                     <div class="main-header" style="display: flex; flex-direction:column; align-items: flex-start;">
                        <h2>Siguiente Periodo</h2>      

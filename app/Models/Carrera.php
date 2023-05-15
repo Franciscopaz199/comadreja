@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Uni;
+use App\Models\Clase;
 
 class Carrera extends Model
 {
@@ -13,7 +14,7 @@ class Carrera extends Model
 	
     public $timestamps = true;
     protected $table = 'carreras';
-    protected $fillable = ['name','shortname','status','logo','description','color1','color2','color3','facultad'];
+    protected $fillable = ['name','shortname','status','logo','description','color1','color2','color3','facultad','periodos'];
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -44,6 +45,24 @@ class Carrera extends Model
         return $this->belongsToMany(Uni::class, 'unihascarreras', 'career_id', 'university_id');
     }
 
+    // hacer la relacion con el modelo puente para recuperar las clases que se imparten en la carrera
+    public function clases()
+    {
+        return $this->belongsToMany(Clase::class, 'puente', 'career_id', 'clases_id')->withPivot('prioridad');
+    }
+
+
+
+    public function departamentos()
+    {
+        $departamentos = [];
+        foreach ($this->clases as $clase) {
+            if (!in_array($clase->departa, $departamentos)) {
+                $departamentos[] = $clase->departa;
+            }
+        }
+        return $departamentos;
+    }
 
     /*
          public function carreras()

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('logo');
             $table->string('description');
+            $table->string('periodos');
             $table->string('color1');
             $table->string('color2');
             $table->string('color3');

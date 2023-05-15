@@ -11,6 +11,7 @@ use App\Models\carrera;
 use App\Models\clase;
 use App\Http\Controllers\admin\admincontroller;
 use App\Models\puente;
+use App\Http\Controllers\admin\lib;
 
 
 class studentController extends Controller
@@ -100,14 +101,29 @@ class studentController extends Controller
 
     public function checkclase(Request $request)
     {
-    
+        
+        // validar que el array de clases enviado todas las clases pertenezcan a la carrera del estudiante
+        $request->validate([
+            'clase' => 'required | array',
+            'clase.*' => 'exists:clases,id|in:'.auth()->user()->student->carrer->clases->implode('id', ',')
+        ]);
+
+        // validar que eligio la clase y tambien sus respectivos requisitos
+        /** 
+          * 
+          * 
+          * =>       Hacer esta validacion !!!!!!!!!!!!!!!!!!!!!!!!!!!
+          * 
+          * 
+          **/
+
+        // editar el status del estudiante a true        
         auth()->user()->student->status = true;
         auth()->user()->student->save();
+
         auth()->user()->student->clases()->detach();
 
-        // validar que todos los ids de las clases existan en la base de datos
-    
-
+       
         if($request->clase != null)
         {
             foreach ($request->clase as $clase) {
@@ -222,7 +238,23 @@ class studentController extends Controller
 
 
     public function estadisticas(){
+         $clasesestudiante = auth()->user()->student->clases->count();
+         $clasescarrera = auth()->user()->student->carrer->clases->count();
+         $UV = auth()->user()->student->clases->sum('UV');
+         $totalUV = auth()->user()->student->carrer->clases->sum('UV');
+         $departamentos = auth()->user()->student->carrer->departamentos();
+         $porcentajeUV = ($UV * 100) / $totalUV;
+         $pocentajeClases = ($clasesestudiante * 100) / $clasescarrera;
+
+         
         return view('student.estadisticas.estadisticas', [
+            'clasesestudiante' => $clasesestudiante,
+            'clasescarrera' => $clasescarrera,
+            'UV' => $UV,
+            'totalUV' => $totalUV,
+            'porcentajeUV' => round($porcentajeUV, 2),
+            'pocentajeClases' => round($pocentajeClases, 2),
+            'departamentos' => $departamentos,
             'carrera' => auth()->user()->student->carrer,
             'clases' => auth()->user()->student->clases
         ]);

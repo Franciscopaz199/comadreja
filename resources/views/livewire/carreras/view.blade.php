@@ -41,6 +41,7 @@
 								<th>Color2</th>
 								<th>Color3</th>
 								<th>Facultad</th>
+								<th>Periodos</th>
 								<td>ACTIONS</td>
 							</tr>
 						</thead>
@@ -57,6 +58,7 @@
 								<td>{{ $row->color2 }}</td>
 								<td>{{ $row->color3 }}</td>
 								<td>{{ $row->facultad }}</td>
+								<td>{{ $row->periodos }}</td>
 								<td width="90">
 								<div class="btn-group">
 									<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
