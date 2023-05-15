@@ -30,7 +30,7 @@
                         <div class="card-body">
                             <p class="card-text ">Clases</p> 
                             <h6 class="card-subtitle mb-2 text-muted " >Clases de la carrera</h6>
-                            <h5 class="card-title text-center">{{ $clasescarrera }}</h5>
+                            <h5 class="card-title text-center">{{$clasesestudiante}}/{{ $clasescarrera }}</h5>
                             <div class="barra-gris">
                                 <div class="barra-amarilla" style="width: {{$pocentajeClases}}%;"></div>
                             </div>
@@ -42,7 +42,7 @@
                         <div class="card-body">
                           <p class="card-text ">UV</p> 
                           <h6 class="card-subtitle mb-2 text-muted " >Unidades Valorativas</h6>
-                         <h5 class="card-title text-center">{{ $totalUV }}</h5>
+                         <h5 class="card-title text-center">{{$UV}}/{{ $totalUV }}</h5>
                          <div class="barra-gris">
                             <div class="barra-amarilla" style="width: {{ $porcentajeUV}}%;"></div>
                          </div>
@@ -54,9 +54,9 @@
                         <div class="card-body">
                           <p class="card-text ">Periodos</p> 
                           <h6 class="card-subtitle mb-2 text-muted " >Periodos en plan de estudios</h6>
-                         <h5 class="card-title text-center">14</h5>
+                         <h5 class="card-title text-center">{{$periodospasados}}/{{$periodos}}</h5>
                          <div class="barra-gris">
-                            <div class="barra-amarilla" style="width: {{ $porcentajeUV}}%;"></div>
+                            <div class="barra-amarilla" style="width: {{$periodospasados * 100 / $periodos}}%;"></div>
                          </div>
                         </div>
                     </div>
@@ -65,10 +65,10 @@
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <p class="card-text ">Promedio clases</p> 
-                            <h6 class="card-subtitle mb-2 text-muted " >Promedio clases / periodo</h6>
-                            <h5 class="card-title text-center">4</h5>
+                            <h6 class="card-subtitle mb-2 text-muted ">Promedio clases / periodo</h6>
+                            <h5 class="card-title text-center">{{$promedioclases}}</h5>
                             <div class="barra-gris">
-                                <div class="barra-amarilla" style="width: {{ $porcentajeUV}}%;"></div>
+                                <div class="barra-amarilla" style="width: 100%;"></div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                     <div class="card main-header mt-2 p-3"> 
                         <h1>Periodo en la carrera:</h1>
                         <p>
-                            Estas en el periodo 7 de la carrera de {{ $carrera->name }}.
+                            Estas en el periodo {{$periodospasados}} de la carrera de {{ $carrera->name }}.
                         </p>
                     </div>
                 </div>
@@ -102,30 +102,35 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th>Total de clases Pasadas:</th>
+                                        <th>Clases Pasadas:</th>
                                         <td>{{ $clasesestudiante }}</td>
                                         <td>{{ $pocentajeClases }}%</td>
                                     </tr>
                                     <tr>
-                                        <th>Total de clases por pasar:</th>
+                                        <th>Clases por pasar:</th>
                                         <td>{{ $clasescarrera - $clasesestudiante }}</td>
                                         <td>{{ 100 - $pocentajeClases }}%</td>
                                     </tr>
                                     
                                     <tr>
-                                        <th>Total de UV pasadas:</th>
+                                        <th> UV pasadas:</th>
                                         <td>{{ $UV }}</td>
                                         <td>{{ $porcentajeUV }}%</td>
                                     </tr>
                                     <tr>
-                                        <th>Total de UV por pasar:</th>
+                                        <th>UV por pasar:</th>
                                         <td>{{ $totalUV - $UV }}</td>
                                         <td>{{ 100 - $porcentajeUV }}%</td>
                                     </tr>
                                     <tr>
-                                        <th>Total de Periodos pasados:</th>
-                                        <th>7</th>
-                                        <th>65%</th>    
+                                        <th> Periodos pasados:</th>
+                                        <th>{{$periodospasados}}</th>
+                                        <th>{{ round($periodospasados * 100 / $periodos,2) }}%</th>    
+                                    </tr>
+                                    <tr>
+                                        <th>Periodos por pasar ({{$promedioclases}}clases/periodo ):</th>
+                                        <th>{{$periodos - $periodospasados}}</th>
+                                        <th>{{ round((($periodos - $periodospasados) * 100 / $periodos),2) }}%</th>
                                     </tr>        
                                 </tbody>
                             </table>

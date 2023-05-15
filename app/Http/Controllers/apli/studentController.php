@@ -238,6 +238,8 @@ class studentController extends Controller
 
 
     public function estadisticas(){
+
+          
          $clasesestudiante = auth()->user()->student->clases->count();
          $clasescarrera = auth()->user()->student->carrer->clases->count();
          $UV = auth()->user()->student->clases->sum('UV');
@@ -245,6 +247,12 @@ class studentController extends Controller
          $departamentos = auth()->user()->student->carrer->departamentos();
          $porcentajeUV = ($UV * 100) / $totalUV;
          $pocentajeClases = ($clasesestudiante * 100) / $clasescarrera;
+         $cantidad = round(auth()->user()->student->carrer->clases->count()  / auth()->user()->student->carrer->periodos);
+         $lib = new lib();
+         $periodosrestantes = $lib->get_plan_estudio($cantidad)["cant"];
+         $periodospasados = auth()->user()->student->carrer->periodos - $periodosrestantes; 
+
+
 
          
         return view('student.estadisticas.estadisticas', [
@@ -256,7 +264,11 @@ class studentController extends Controller
             'pocentajeClases' => round($pocentajeClases, 2),
             'departamentos' => $departamentos,
             'carrera' => auth()->user()->student->carrer,
-            'clases' => auth()->user()->student->clases
+            'clases' => auth()->user()->student->clases,
+            'periodosrestantes' => $periodosrestantes,
+            'periodos' => auth()->user()->student->carrer->periodos,
+            'promedioclases' => $cantidad,
+            'periodospasados' => $periodospasados
         ]);
     }
 
