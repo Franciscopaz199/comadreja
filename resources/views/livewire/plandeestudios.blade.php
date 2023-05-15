@@ -103,11 +103,11 @@
                                             <div class="cuadro-periodo">
                                                 <div class="linea-anio">
                                                     <div class="linea-amarilla">
-                                                        <p class="info-per">Periodo {{$periodo["periodo"]}}</p>
+                                                        <p class="info-per">Periodo {{$periodo["anio"]}}</p>
                                                     </div>
                                                     @if(($periodo["periodo"] - 1) % 3 == 0)
                                                         <div class="linea-azul">
-                                                            <p class="info-per">Anio: {{(($periodo["periodo"]) % 3 )+1}}</p>
+                                                            <p class="info-per">Anio: {{(($periodo["periodo"]-1) / 3 )+1}}</p>
                                                         </div>
                                                     @endif
                                                 </div>
