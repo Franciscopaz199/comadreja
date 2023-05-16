@@ -54,7 +54,10 @@ class Plandeestudios extends Component
         $this->periodosrestantes = count($this->clasesperiodo1);
         $this->clases_restantes = auth()->user()->student->carrer->puente->count() - auth()->user()->student->clases->count();
         $this->totalUV = $lib->get_plan_estudio($this->cant)["UV"];
+       
         $this->salida = $lib->get_plan_estudio($this->cant)["periodos"][count($this->clasesperiodo1) - 1]["anio"];
+        
+        
         $this->fechaactual = date('d-m-Y');
         $this->restantes = $this->getRestantes();
 
