@@ -9,7 +9,7 @@ class JefeDepartamento extends Model
 {
     use HasFactory;
 
-    protected $table = 'jefes_departamento';
+    protected $table = 'jefesDepartamento';
 
     public function usuario()
     {
@@ -19,6 +19,12 @@ class JefeDepartamento extends Model
     // jefe departamento pertenece a departamento
     public function departamento()
     {
-        return $this->belongsTo('App\Models\departamento', 'depto_id', 'id');
+        return $this->belongsTo('App\Models\Departamento', 'depto_id', 'id');
+    }
+
+    // jefe departamento pertenece a uni
+    public function universidad()
+    {
+        return $this->belongsTo('App\Models\Uni', 'uni_id', 'id');
     }
 }

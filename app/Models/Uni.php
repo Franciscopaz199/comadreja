@@ -22,4 +22,10 @@ class Uni extends Model
         return $this->belongsToMany(Carrera::class, 'unihascarreras', 'university_id', 'career_id');
     }
 
+    // relacion uno a muchos con jefe departamento
+    // public function jefes()
+    // {
+    //     return $this->hasMany('App\Models\JefeDepartamento', 'uni_id', 'id');
+    // }
+
 }
