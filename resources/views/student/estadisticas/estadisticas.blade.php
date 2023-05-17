@@ -85,12 +85,12 @@
                 </div>
             </div>
             <div class="row mt-5">
-                <div class="col-lg-5 ">
+                <div class="card col-lg-5 ">
                     
                     <div class="main-header"> 
                         <h1>Tus estadisticas:</h1>
                     </div>
-                    <div class="card mt-3">
+                    <div >
                         <div class="content">
                             <table class="table table-responsive">
                                 <thead>
@@ -141,7 +141,7 @@
 
 
                 </div>
-                <div class="col-lg-7 pl-5">
+                <div class="col-lg-7 pl-5 ">
                     <div class="main-header"> 
                         <h1>Por departamento:</h1>
                     </div>

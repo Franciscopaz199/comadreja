@@ -107,7 +107,7 @@
                                                     </div>
                                                     @if(($periodo["periodo"] - 1) % 3 == 0)
                                                         <div class="linea-azul">
-                                                            <p class="info-per">Anio: {{(($periodo["periodo"]-1) / 3 )+1}}</p>
+                                                            <p class="info-per">Año: {{(($periodo["periodo"]-1) / 3 )+1}}</p>
                                                         </div>
                                                     @endif
                                                 </div>
