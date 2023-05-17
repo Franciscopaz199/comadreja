@@ -16,6 +16,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Route Hooks - Do not delete//
+	Route::view('jefesdepartamentos', 'livewire.jefesdepartamentos.index')->middleware('auth');
 
 // rutas del administrador
 Route::view('clases', 'livewire.clases.index')->middleware('auth');
