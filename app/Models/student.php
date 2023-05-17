@@ -15,7 +15,6 @@ class student extends Model
         'user',
     ];
 
-
     // relacion uno a uno con la tabla universidad
     public function universidad()
     {

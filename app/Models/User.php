@@ -33,6 +33,18 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\student', 'user', 'id');
     }
+
+    // //relacion uno a uno con la tabla jefes_departamento
+    // public function jefedepartamento()
+    // {
+    //     return $this->hasOne('App\Models\JefeDepartamento', 'user_id', 'id');
+    // }
+
+    // //relacion uno a uno con la tabla admins
+    // public function admin()
+    // {
+    //     return $this->hasOne('App\Models\student', 'user_id', 'id');
+    // }
     
     public function setPasswordAttribute($value){
         // esto encripta el attributo password en la base de datos 

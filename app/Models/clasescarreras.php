@@ -11,7 +11,6 @@ class clasescarreras extends Model
 
     use HasFactory;
 
-
     public function carrera()
     {
         return $this->belongsTo('App\Models\Carrera', 'career_id', 'id');
