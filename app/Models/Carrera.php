@@ -15,18 +15,11 @@ class Carrera extends Model
     public $timestamps = true;
     protected $table = 'carreras';
     protected $fillable = ['name','shortname','status','logo','description','color1','color2','color3','facultad','periodos'];
-	
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
+
     public function facultade()
     {
         return $this->hasOne('App\Models\Facultade', 'id', 'facultad');
     }
-    
-    // relacion de muchos a muchos con la tabla clases
-
-    // relacion de muchos a muchos con la tabla clases
    
     // relacion de uno a muchos con el modelo student
     public function students()
