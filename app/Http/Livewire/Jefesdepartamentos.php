@@ -57,7 +57,7 @@ class Jefesdepartamentos extends Component
         ]);
         
         $this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');
+        $this->dispatchBrowserEvent('closeModal');
 		session()->flash('message', 'Jefesdepartamento Successfully created.');
     }
 

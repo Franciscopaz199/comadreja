@@ -11,10 +11,7 @@
             
            <div class="modal-body">
 				<form>
-                    <div class="form-group">
-                        <label for="user_id"></label>
-                        <input wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+                    
 
                     <div class="form-group">
                         <label for="user_id">Jefe de departamento</label>
@@ -29,8 +26,8 @@
 
 
                     <div class="form-group">
-                        <label for="departamento">deparatamento</label>
-                        <select wire:model="depto_id" name="deparatamento" id="depto_id" placeholder="Depto Id" class="form-control"> 
+                        <label for="departamento">departamento</label>
+                        <select wire:model="depto_id" name="departamento" id="depto_id" placeholder="Depto Id" class="form-control"> 
                             <option value="">Seleccione un departamento</option>
                                 @foreach ($departamentos as $departamento)
                                     <option value="{{ $departamento->id }}">{{ $departamento->name }}</option>
@@ -78,11 +75,7 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="form-group">
-                        <label for="user_id"></label>
-                        <input wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id">@error('user_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-
+                  
                     <div class="form-group">
                         <label for="user_id">Jefe de departamento</label>
                         <select wire:model="user_id" type="text" class="form-control" id="user_id" placeholder="User Id"> 
@@ -96,8 +89,8 @@
 
 
                     <div class="form-group">
-                        <label for="departamento">deparatamento</label>
-                        <select wire:model="depto_id" name="deparatamento" id="depto_id" placeholder="Depto Id" class="form-control"> 
+                        <label for="departamento">departamento</label>
+                        <select wire:model="depto_id" name="departamento" id="depto_id" placeholder="Depto Id" class="form-control"> 
                             <option value="">Seleccione un departamento</option>
                                 @foreach ($departamentos as $departamento)
                                     <option value="{{ $departamento->id }}">{{ $departamento->name }}</option>
