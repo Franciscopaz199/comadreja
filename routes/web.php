@@ -6,17 +6,6 @@ use App\Http\Controllers\carrerasdash;
 use App\Http\Controllers\apli\aplicontroller;
 use App\Http\Controllers\apli\studentController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('login.index');
 });
@@ -72,6 +61,7 @@ Route::post('/selectclases',[studentController::class, 'checkclase'])->name('che
 
 // rutas home de estudiante
 Route::get('/homeestudiante',[studentController::class, 'homees'])->name('home')->middleware('auth');
+
 /*Route::get('/homeestudiante',[studentController::class, 'homeestudiante'])->name('home')->middleware('auth');*/Route::get('/editclases',[studentController::class, 'editclases'])->name('editclases')->middleware('auth');
 Route::get('/planestudios',[studentController::class, 'planestudios'])->name('planestudios')->middleware('auth');
 Route::get('/crearplan', [studentController::class, 'crearplan'])->name('crearplan')->middleware('auth');
