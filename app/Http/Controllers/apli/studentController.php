@@ -20,7 +20,7 @@ class studentController extends Controller
     {
         if( auth()->user()->student->uni == null )
         {
-            return view('student.index', [
+            return view('student.seleccion.seleccionaruniversidad', [
                 'universidades' => Uni::all()
             ]);
         }
@@ -53,7 +53,7 @@ class studentController extends Controller
 
         if(auth()->user()->student->carrera == null)
         {
-            return view('student.selecarrera', [
+            return view('student.seleccion.selecarrera', [
                 'carreras' => Uni::find(auth()->user()->student->uni)->carreras,
                 'universidad' => Uni::find(auth()->user()->student->uni)
             ]);
@@ -89,8 +89,8 @@ class studentController extends Controller
 
         if(auth()->user()->student->status == null)
         {
-            return view('student.selectclases.index', [
-                'carrera' => auth()->user()->student->carrer
+            return view('student.seleccion.selectclase', [
+                'clases' => auth()->user()->student->carrer->clases
             ]);
         }
         return redirect()->route('home');
@@ -104,7 +104,6 @@ class studentController extends Controller
         
         // validar que el array de clases enviado todas las clases pertenezcan a la carrera del estudiante
         $request->validate([
-            'clase' => 'required | array',
             'clase.*' => 'exists:clases,id|in:'.auth()->user()->student->carrer->clases->implode('id', ',')
         ]);
 

@@ -1,9 +1,7 @@
 /* importar la fuente lexend deca */
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
 
 *{
     line-height: 1.5;
-    font-family: 'Lexend Deca', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: content-box !important;
@@ -53,6 +51,7 @@
     padding: 60px;
     color : #fff;
     text-align: center;
+    z-index: 100;
     
 }
 .medio p{
@@ -79,13 +78,14 @@
     min-height: 100vh;
     background: #fff;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .formulario-container{
     padding: 50px;
     border-radius: 10px;
-    max-width: 470px;
+    max-width: 500px;
     width: 70%;
     padding: 10px;
     padding: 50px 30px;
@@ -286,7 +286,7 @@
     }
     .formulario-container{
         width: 100%;
-        max-width: 100%;
+        box-sizing: border-box !important;
         padding: 20px;
     }
 }

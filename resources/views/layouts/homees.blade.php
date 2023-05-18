@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{$title ?? 'UNAH'}}</title>
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/46c5c26f8c.js" crossorigin="anonymous"></script>
 
@@ -13,25 +12,12 @@
     <link rel="stylesheet" href={{ asset('css/style-modern.css') }}>
     <link rel="stylesheet" href={{ asset('css/components.css') }}>
     <link rel="stylesheet" href={{ asset('css/style-homees.css') }}>
+    <link rel="stylesheet" href={{ asset('css/globalstyles.css') }}>
     @yield('css')
 </head>
 <body>  
     <div class="contenedor-app">
-        <div class="headerpage" style="display: flex; justify-content:space-between; padding:20px 50px;">
-            <h1>{{ config('app.name', '') }}</h1>
-            <li class="nav-item dropdown" style="list-style: none;">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{
-                    Auth::user()->name
-                  }}
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="{{route('editclases')}}">Editar Clases</a>
-                  <a class="dropdown-item" href="#">Editar Perfil</a>
-                  <a class="dropdown-item" href="{{route('logout')}}">Cerrar Sesion</a>
-                </div>
-              </li>
-        </div>
+        <x-navbar></x-navbar>
         <div class="contenido-app">
             <div class="menu">
                 <ul>

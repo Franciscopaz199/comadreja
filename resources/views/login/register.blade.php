@@ -28,7 +28,7 @@
             <div class="medio">
                 <h4>Ya tienes una cuenta?</h4>
                 <p>
-                    Inicia sesion y podras acceder a todos los servicios que te ofrece Class Assitan
+                    Inicia sesion y podras acceder a todos los servicios que te ofrece {{ config('app.name', 'ClassAssistan') }}
                 </p>
                 <a href="{{route('login')}}" class="btn " style="
                 
@@ -42,7 +42,10 @@
         <div class="right-section">
             <div class="formulario-container">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger" style="
+                        position: fixed;
+                        top: 0;
+                    ">
                         <p>No se ha completado tu registro</p>
                         <ul>
                             @foreach ($errors->all() as $errors)
@@ -50,6 +53,14 @@
                             @endforeach
                         </ul>
                     </div>
+                    <script>
+                        // hacer que el alert desaparezca despues de 5 segundos
+                        setTimeout(function(){
+                            document.querySelector('.alert').remove();
+                        }, 4000);
+
+                        
+                    </script>
                 @endif
                 
                 <div class="title">
@@ -59,20 +70,15 @@
                 
                <form action="{{route('create')}}" method="POST">
                 @csrf
-                    <div style="display: flex;
                     
-                    justify-content: space-between;
-                    ">
-                        <div class="form-group">
-                            <label for="email"><b>Nombre de Usuario</b></label>
+                    <div class="form-group">
+                        <label for="email"><b>Nombre de Usuario</b></label>
                             <input type="text" name="name" id="email"  class="input-enviar" placeholder="ejemplo: Francisco Paz" required>
                         </div>
                         <div class="form-group">
-                            <label for="cuenta"><b>Numero de Cuenta</b></label>
-                            <input type="text" name="cuenta" id="cuenta"  class="input-enviar" placeholder="ejemplo: 20212300157" required>
-                        </div>
+                        <label for="cuenta"><b>Numero de Cuenta</b></label>
+                        <input type="text" name="cuenta" id="cuenta"  class="input-enviar" placeholder="ejemplo: 20212300157" required>
                     </div>
-
                    <div class="form-group">
                        <label for="email"><b>Correo</b></label>
                        <input type="email" name="email" id="email"  class="input-enviar" placeholder="ejemplo: fjpazf@unah.hn" required>

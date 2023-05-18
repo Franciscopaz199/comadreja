@@ -1,19 +1,32 @@
 .contenido{
     flex-direction: row-reverse;
 }
+
 .right-section{
     display: flex;
     flex-direction: column;
 }
-.container-select-uni{
-    width: 80%;
-    height: 50%;
-}
 .right-section{
-    width: 75%;
+    width: 100%;
 }
-.lef-section{
-    width: 25%;
+.titulo{
+    margin-top: 10px;
+    height: 15vh;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+
+    box-sizing: border-box;
+    padding: 20px 70px;
+}
+.container-select-uni{
+    width: 100%;
+    height: 60vh;
+    box-sizing: border-box;
+    padding: 20px 70px;
+
+    min-width: 300px;
+    height: 50%;
 }
 
 .radioseleccion{
@@ -29,18 +42,25 @@
     
 }
 .btn-container{
-    margin-top: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
 }
 .boton-enviar{
     min-width: 300px;
 }
-
+.boton-atras{
+    background-color: #fff;
+}
 
 
 @media screen and (max-width: 968px) {
     .contenido{
         flex-direction: column;
-
+    }
+    .headerpage{
+        height: auto;
+        padding: 20px 15px;
     }
     .right-section{
         width: 100%;
@@ -49,6 +69,15 @@
         width: 100%;
         height: auto;
     }
-   
+    .boton-enviar{
+        min-width: 0px;
+        width:auto;
+    }
+    .container-select-uni{
+        padding: 20px 15px;
+    }
+    .titulo{
+        padding: 20px 15px;
+    }
     
 }

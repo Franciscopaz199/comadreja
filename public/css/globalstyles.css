@@ -1,31 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
 *{
     margin: 0;
     padding: 0;
-    font-family:  'helvetica', sans-serif;
-}
-
-.contenedor {
-    width: 100%;
-    min-height: 100vh;
-    height: auto;
-}
-.contenedor h1{
-    font-size: 60px;
-    font-weight: 300;
-    color: #333;
-    font-family: 'system-ui', sans-serif;
-}
-.contenido-app{
-    width: 100%;
-    height: auto;
-    min-height: 70vh;
-    display: flex;
-    flex-direction: column;
     box-sizing: border-box;
-    padding: 50px;
-  }
+    font-family: 'Lexend Deca', sans-serif;
+    
+}
 
+  .headerpage {
+    width: 100%;
+    height: 7vh !important;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-sizing: border-box !important;
+    display: flex;
+    justify-content:space-between; 
+    padding:20px 70px;
+    background: linear-gradient(0deg, rgba(22,71,115,1) 0%, rgba(43,68,140,1) 100%);
+    color: #fff;
+}
 
-
-
+@media screen and (max-width: 968px) {
+    
+    .headerpage{
+        height: auto;
+        padding: 10px 40px 10px 10px;
+    }
+}
 
