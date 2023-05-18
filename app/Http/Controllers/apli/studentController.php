@@ -239,7 +239,6 @@ class studentController extends Controller
 
     public function estadisticas(){
 
-          
          $clasesestudiante = auth()->user()->student->clases->count();
          $clasescarrera = auth()->user()->student->carrer->clases->count();
          $UV = auth()->user()->student->clases->sum('UV');
@@ -248,13 +247,25 @@ class studentController extends Controller
          $porcentajeUV = ($UV * 100) / $totalUV;
          $pocentajeClases = ($clasesestudiante * 100) / $clasescarrera;
          $cantidad = round(auth()->user()->student->carrer->clases->count()  / auth()->user()->student->carrer->periodos);
+         
+         $departamentos2 = [];
+         foreach( $departamentos as $departamento)
+         {
+            $departamento2 = [
+                'departamento' => $departamento->name,
+                'clases' => $departamento->clases->count(),
+                'clasesestudiante' => auth()->user()->student->clases->where('departamento', $departamento->id)->count(),
+                'uv' => auth()->user()->student->clases->where('departamento', $departamento->id)->sum('UV'),
+                'uvtotal' => $departamento->clases->sum('UV'),
+                'porcentaje' => (auth()->user()->student->clases->where('departamento', $departamento->id)->count() * 100) / $departamento->clases->count()
+            ];
+            array_push($departamentos2, $departamento2);
+         }
+         
          $lib = new lib();
          $periodosrestantes = $lib->get_plan_estudio($cantidad)["cant"];
          $periodospasados = auth()->user()->student->carrer->periodos - $periodosrestantes; 
 
-
-
-         
         return view('student.estadisticas.estadisticas', [
             'clasesestudiante' => $clasesestudiante,
             'clasescarrera' => $clasescarrera,
@@ -262,7 +273,7 @@ class studentController extends Controller
             'totalUV' => $totalUV,
             'porcentajeUV' => round($porcentajeUV, 2),
             'pocentajeClases' => round($pocentajeClases, 2),
-            'departamentos' => $departamentos,
+            'departamentos' => $departamentos2,
             'carrera' => auth()->user()->student->carrer,
             'clases' => auth()->user()->student->clases,
             'periodosrestantes' => $periodosrestantes,

@@ -44,6 +44,22 @@ class aplicontroller extends Controller
             'cuenta' => 'required|min:11|max:11|unique:students,accountnumber' 
         ]);
 
+        // validar si el correo termina con @unah o @unah
+        $correo = $request->email;
+        $dominio = substr($correo, strpos($correo, "@"));
+        if( $dominio == '@unah.edu.hn')
+        {
+            // crear el usuuario y asignarle el rol de jeje de departamento
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+            ]);
+
+            $user->assignRole('jefe de departamento');
+            return redirect()->route('apli');
+        }
+
         // creamos el usuario y el estudiante
         $user = User::create([
             'name' => $request->name,

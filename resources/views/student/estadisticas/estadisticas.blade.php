@@ -148,21 +148,16 @@
                     @foreach ($departamentos as $departamento)
                         <div class="card mt-3">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $departamento->name }}</h5>
+                                <h5 class="card-title">{{ $departamento['departamento'] }}</h5>
                                 <div class="container-informa">
-                                    <p class="card-text informa">Clases: {{ $departamento->clases_carrera()["total"] }}</p>
-                                    <p class="card-text informa">Pasadas: {{ $departamento->clases_estudiante()['total'] }}</p>
-                                    <p class="card-text informa">UV: {{ $departamento->clases_carrera()["uv"] }}</p>
-                                    <p class="card-text informa">Pasadas:{{ $departamento->clases_estudiante()["uv"] }} </p>
-                                    <p></p>
+                                    <p class="card-text informa">Clases: {{ $departamento["clases"] }}</p>
+                                    <p class="card-text informa">Pasadas: {{ $departamento["clasesestudiante"] }}</p>
+                                    <p class="card-text informa">UV: {{ $departamento["uvtotal"] }}</p>
+                                    <p class="card-text informa">Pasadas:{{ $departamento["uv"] }}</p>
+                                       
+                                        <p></p>
                                 </div>
-                               <!--
-                                     <p>Clases: {{ round($departamento->clases_estudiante()['total']*100 / $departamento->clases_carrera()['total'], 2 )}}%</p>
-                                <div class="barra-gris">
-                                    <div class="barra-amarilla" style="width: {{ $departamento->clases_estudiante()['total']*100 / $departamento->clases_carrera()['total'] }}%;">
-                                </div> 
-                               -->
-                                
+                              
                             </div>
                         </div>
                     @endforeach

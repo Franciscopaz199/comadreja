@@ -22,7 +22,7 @@ class Departamento extends Model
     {
         return $this->hasMany(Clase::class, 'departamento', 'id');
     }
-
+    
     public function carreras()
     {
         $carreras = [];
@@ -59,23 +59,25 @@ class Departamento extends Model
 
     public function clases_estudiante()
     {
-        $clases_estudiante = auth()->user()->student->clases;
-        $clases = [];
+        $clasesestudi = auth()->user()->student->clases;
+        $clasesrestantes = [];
         $uv = 0;
-        foreach ($clases_estudiante as $clase) 
+
+        foreach ($clasesestudi as $clase) 
         {
             if ($clase->departamento == $this->id) 
             {
-                array_push($clases, $clase);
+                array_push($clasesrestantes, $clase);
                 $uv += $clase->UV;
             }
         }
-        $clases = [
+
+        $clasesest = [
             'uv' => $uv,
-            'total' => count($clases),
-            'clases' => $clases
+            'total' => count($clasesrestantes),
+            'clases' => $clasesrestantes
         ];
-        return $clases;
+        return $clasesest;
     }
 
 
