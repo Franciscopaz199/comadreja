@@ -1,11 +1,16 @@
+/* importar la fuente lexend deca */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
 
 *{
     line-height: 1.5;
-    font-family: "Be Vietnam Pro", sans-serif !important;
+    font-family: 'Lexend Deca', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box !important;
 }
 
 :root {
-    --content-bg-color: #21283C;
+    --content-bg-color: rgb(22,71,115);
     --content-texfont-color-2: #FFD00D;
 
 }
@@ -20,16 +25,19 @@
     height: 100vh;
     position: sticky;
     top: 0;
-    background: var(--content-bg-color);
+    background: rgb(22,71,115);
+    background: linear-gradient(0deg, rgba(22,71,115,1) 0%, rgba(43,68,140,1) 100%);
     display: flex;
     flex-direction: column; 
+    overflow: hidden;
 }
 .top{
     width: 100%;
     height: 20%;
     display: flex;
     box-sizing: border-box;
-    padding: 60px;
+    box-sizing: border-box;
+    padding: 20px 60px 0 20px;
     color: #fff !important;
 }
 .top h2{
@@ -41,10 +49,10 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     padding: 60px;
     color : #fff;
-    text-align: justify;
+    text-align: center;
     
 }
 .medio p{
@@ -61,13 +69,13 @@
     align-items: flex-end;
     flex-direction: column;
     justify-content: center;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     padding: 20px 60px 0 20px;
 }
 
 
 .right-section{
-    width: 100%;
+    width: 62%;
     min-height: 100vh;
     background: #fff;
     display: flex;
@@ -76,15 +84,19 @@
 }
 .formulario-container{
     padding: 50px;
-    border-radius: 30px;
-    width: 470px;
+    border-radius: 10px;
+    max-width: 470px;
+    width: 70%;
     padding: 10px;
     padding: 50px 30px;
-    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+    background-color: #fff;
+    
 }
 .btn-enviar{
     background-color: var(--content-bg-color) !important;
-    padding: 15px 10px;
+    
+    padding: 20px 10px;
     color: #fff !important;
 }
 .btn-enviar:hover{
@@ -108,16 +120,15 @@
     height: 50px;
 
 
-    font-family: 'Poppins';
     font-style: normal;
     font-weight: 700;
-    font-size: 35px;
+    font-size: 30px;
     /* or 125% */
 
     display: flex;
     align-items: center;
 
-    color: #000000;
+    color: var(--content-bg-color);
 }
 .form-group{
     margin-bottom: 30px;
@@ -125,15 +136,137 @@
     flex-direction: column;
 }
 .input-enviar{
-    padding: 15px 10px;
-    border-radius: 10px;
+    padding: 10px 10px;
+    border-radius: 2px;
     border: none;
     border: 1px solid #ccc;
     outline: none;
 }
 
 .input-enviar:focus{
-    border: 1px solid var(--content-bg-color);
+    border: 2px solid var(--content-bg-color);
+}
+
+/* burbujas */
+.burbuja{
+    border-radius: 50%;
+    background: #2596ff;
+    opacity: .3;
+
+    position: absolute;
+    bottom: -150;
+    
+    animation: burbujas 3s linear infinite ;
+}
+
+.burbuja:nth-child(1){
+    width: 80px;
+    height: 80px;
+    left: 5%;
+    animation-duration: 3s;
+    animation-delay: 3ms;
+}
+
+.burbuja:nth-child(2){
+    width: 100px;
+    height: 100px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(3){
+    width: 20px;
+    height: 20px;
+    left: 15%;
+    animation-duration: 1.5s;
+    animation-delay: 7s;
+}
+
+.burbuja:nth-child(4){
+    width: 50px;
+    height: 50px;
+    left: 90%;
+    animation-duration: 6s;
+    animation-delay: 3s;
+}
+
+.burbuja:nth-child(5){
+    width: 70px;
+    height: 70px;
+    left: 65%;
+    animation-duration: 3s;
+    animation-delay: 1s;
+}
+
+.burbuja:nth-child(6){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(7){
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    animation-duration: 4s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(8){
+    width: 100;
+    height: 100px;
+    left: 52%;
+    animation-duration: 5s;
+    animation-delay: 5s;
+}
+
+.burbuja:nth-child(9){
+    width: 65px;
+    height: 65px;
+    left: 51%;
+    animation-duration: 3s;
+    animation-delay: 2s;
+}
+
+.burbuja:nth-child(10){
+    width: 40px;
+    height: 40px;
+    left: 35%;
+    animation-duration: 3s;
+    animation-delay: 4s;
+}
+
+
+@keyframes burbujas{
+    0%{
+        bottom: 0;
+        opacity: 0;
+    }
+    30%{
+        transform: translateX(30px);
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        bottom: 100vh;
+        opacity: 0;
+    }
+}
+
+@keyframes movimiento{
+    0%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(30px);
+    }
+    100%{
+        transform: translateY(0);
+    }
 }
 
 @media screen and (max-width: 968px) {
@@ -150,5 +283,10 @@
     .right-section{
         width: 100%;
         height: 100vh;
+    }
+    .formulario-container{
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
     }
 }

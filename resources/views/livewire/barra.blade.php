@@ -92,7 +92,7 @@
                     </tr>
                     <tr>
                         <th>Periodos en plan de estudio:</th>
-                        <td>H</td>
+                        <td> {{ $carrera->periodos}}</td>
                     </tr>
                 </tbody>
               </table>

@@ -2,26 +2,39 @@
 @section('css')
     <link href="{{ asset('css/loginstyles.css') }}" rel="stylesheet">
 @section('contenido')
-<!--
+
     <div class="contenido">
         <div class="lef-section">
+            <div class="burbujas">
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+                <div class="burbuja"></div>
+            </div>
             <div class="top">
-                <h2 >Class Assitan</h2>
+                <h2> {{ config('app.name', 'ClassAssistan') }}</h2>
             </div>
             <div class="medio">
-                <h4>Recordatorio</h4>
-                <p>Gracias por usar esta aplicacion estamos facinados de que esta herramienta le sea 
-                    de utilidad, trabajamos muy  duro para
-                    asegurarnos de que usted tenga la mejor experiencia posible.
-                    Por favor, si tiene alguna pregunta o sugerencia, no dude en contactarnos.
+                <h4>No te has registrado?</h4>
+                <p>
+                    Registrate y podras acceder a todos los servicios que te ofrece comadreja
                 </p>
-                <p>Atentamente: el equipo de desarrollado de IS-CURLP</p>
+                <a href="{{route('register')}}" class="btn " style="
+                
+                 border-color: #fff !important; color: #fff !important;
+                ">Registrarse</a>
             </div>
             <div class="bottom">
                 <p>desarrollado por IS-UNAH</p>
             </div>
         </div>
-        -->
+
         <div class="right-section">
             <div class="formulario-container">
                  <div class="title">
@@ -51,11 +64,12 @@
                         <input type="password" name="password" id="password" class="input-enviar" placeholder="Contraseña">
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-enviar btn-block" style="width: 100% !important;  ">Iniciar sesion</button>
+                        <button type="submit" class="btn btn-enviar btn-block" >Iniciar sesion</button>
                     </div>
                 </form>
                 <p>No te has registrado? <a href="{{route('register')}}">registrarse</a></p>
             </div>
         </div>
     </div>
+    
 @endsection
