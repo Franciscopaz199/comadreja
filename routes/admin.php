@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\carrerasdash;
 
 // ruta para administrar los roles y permisos
-Route::get('roles-permisos', [App\Http\Controllers\RolesPermisosController::class, 'index'])->name('roles-permisos')->middleware('auth');
+Route::get('Rolespermisos', [App\Http\Controllers\Admincontroller::class, 'Rolespermisos'])->name('Rolespermisos')->middleware('auth');
+Route::post('crearrol', [App\Http\Controllers\Admincontroller::class, 'crearrol'])->name('crearrol')->middleware('auth');
+Route::post('crearpermiso', [App\Http\Controllers\Admincontroller::class, 'crearpermiso'])->name('crearpermiso')->middleware('auth');
+Route::delete('eliminarrol/{rol}', [App\Http\Controllers\Admincontroller::class, 'eliminarrol'])->name('eliminarrol')->middleware('auth');
+
 
 Route::middleware(['role:admin' ])->group(function () { 
     // rutas del administrador
