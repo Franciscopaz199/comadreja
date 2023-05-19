@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\apli\studentController;
 
-Route::middleware(['role:student' ])->group(function () {
+Route::middleware(['role:estudiante' ])->group(function () {
     Route::get('/selectuni',[studentController::class, 'selectuni'])->name('selectuni')->middleware('auth');
     Route::post('/selectuni',[studentController::class, 'selectuniv'])->name('selectuniv')->middleware('auth');
     // rutas para seleccionar carrera

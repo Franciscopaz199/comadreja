@@ -62,6 +62,12 @@
                         <li class="nav-item">
                             <a href="{{ url('carreras/dash') }}" class="nav-link"><i class="fab fa-laravel text-info"></i>PlandeEstudio</a> 
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ url('Rolespermisos') }}" class="nav-link"><i class="fab fa-laravel text-info"></i>Roles</a>
+
+
+                        </li>
+
                     </ul>
 					@endauth()
 					
