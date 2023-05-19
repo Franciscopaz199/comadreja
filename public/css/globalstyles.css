@@ -17,7 +17,7 @@
     box-sizing: border-box !important;
     display: flex;
     justify-content:space-between; 
-    padding:20px 70px;
+    padding:20px 80px;
     background: linear-gradient(0deg, rgba(22,71,115,1) 0%, rgba(43,68,140,1) 100%);
     color: #fff;
 }

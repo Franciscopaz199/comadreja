@@ -86,7 +86,6 @@ class lib extends Controller
                     else
                     {
                         $uv -= $puente->clase->UV;
-                        break;
                     }
                 }
             }
