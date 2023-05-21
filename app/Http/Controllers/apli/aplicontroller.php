@@ -71,6 +71,12 @@ class aplicontroller extends Controller
             'accountnumber' => $request->cuenta,
         ]);
 
+        // despues de crear el estudiante le asignamos el rol de estudiante
+        $user->assignRole('estudiante');
+
+        // asignarle el permiso de elegir universidad
+        $user->givePermissionTo('elegir universidad');
+    
         // despues de crear el usuario, iniciamos sesion
         auth()->login($user);
         return redirect()->route('selectuni');
@@ -89,7 +95,7 @@ class aplicontroller extends Controller
         if (Auth::attempt($credentials)) {
             // si se inicia sesion correctamente, redirigimos al usuario a la pagina de inicio
             $request->session()->regenerate();
-            return redirect(route('home'));
+            return redirect(route('homees'));
         }
 
         // si no se inicia sesion correctamente, redirigimos al usuario a la pagina de inicio de sesion

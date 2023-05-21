@@ -7,8 +7,12 @@
           }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{route('editclases')}}">Editar Clases</a>
-          <a class="dropdown-item" href="#">Editar Perfil</a>
+          @can('editar clases')
+            <a class="dropdown-item" href="{{route('editclases')}}">Editar Clases</a>
+          @endcan
+          @can('editar perfil')
+            <a class="dropdown-item" href="#">Editar Perfil</a>
+          @endcan
           <a class="dropdown-item" href="{{route('logout')}}">Cerrar Sesion</a>
         </div>
       </li>

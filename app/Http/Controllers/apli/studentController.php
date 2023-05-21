@@ -39,6 +39,10 @@ class studentController extends Controller
         $student = $user->student;
         $student->uni = $universidad;
         $student->save();
+
+        // asignar el permiso de elegir carrera al usuario
+        $user->givePermissionTo('elegir carrera');
+
         return redirect()->route('selectcarrera' );
     }
 
@@ -75,6 +79,10 @@ class studentController extends Controller
         $student = $user->student;
         $student->carrera = $carrera;
         $student->save();
+
+
+        // asignar el permiso de elegir clases al usuario
+        $user->givePermissionTo('seleccionar clases');
         return redirect()->route('selectclases');
     }
 
@@ -132,7 +140,12 @@ class studentController extends Controller
 
          $admin = new admincontroller();
          $prueba  =  $admin->clasesquepuedelleva();
-         return redirect()->route('home');
+
+        // asignar el rol de estudiante verificado al usuario
+        $user = User::find(auth()->user()->id);
+        $user->assignRole('estudiante verificado');
+
+         return redirect()->route('homees');
     }
 
     public function homeestudiante()
@@ -167,7 +180,7 @@ class studentController extends Controller
     public function homees(){
         if(Auth()->user()->student->status == null)
         {
-            return redirect()->route('selectclases');
+            return redirect()->route('selectuniv');
         }
         $clases = auth()->user()->student->clasesdisponibles;
         $UV = 0;

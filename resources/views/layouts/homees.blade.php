@@ -43,7 +43,7 @@
                         </a>
                      </li>
                      <li class="inicio">
-                        <a href="{{route('home')}}">
+                        <a href="{{route('homees')}}">
                             <i class="fa-solid fa-house"
                                 @if (Request::is('homeestudiante'))
                                     style="color: var(--secondary-color);"
