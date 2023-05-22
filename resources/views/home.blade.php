@@ -9,13 +9,14 @@
 			<div class="card-body">
 				<h5>Hi <strong>{{ Auth::user()->name }},</strong> {{ __('You are logged in to ') }}{{ config('app.name', 'Laravel') }}</h5>
 				</br> 
-				<hr>				
+				<hr>
+								
 			<div class="row w-100">
 					<div class="col-md-3">
 						<div class="card border-info mx-sm-1 p-3">
 							<div class="card border-info text-info p-3" ><span class="text-center fa fa-plane-departure" aria-hidden="true"></span></div>
 							<div class="text-info text-center mt-3"><h4>Flights</h4></div>
-							<div class="text-info text-center mt-2"><h1>235</h1></div>
+							<div class="text-info text-center mt-2"><h1>234</h1></div>
 						</div>
 					</div>
 					<div class="col-md-3">

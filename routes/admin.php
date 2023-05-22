@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\carrerasdash;
 
+Route::view('departamentos', 'livewire.departamentos.index')->middleware('auth');
 // ruta para administrar los roles y permisos
 Route::get('Rolespermisos', [App\Http\Controllers\Admincontroller::class, 'Rolespermisos'])
     ->name('Rolespermisos')
@@ -52,8 +53,9 @@ Route::put('asignarpermiso/{rol}/{permiso}', [App\Http\Controllers\Admincontroll
 Route::delete('quitarpermiso/{rol}/{permiso}', [App\Http\Controllers\Admincontroller::class, 'quitarpermiso'])
     ->name('quitarpermiso')
     ->middleware('auth');
-
-Route::middleware(['role:admin' ])->group(function () { 
+    Route::view('documents', 'livewire.documents.index')->middleware('auth');
+    
+//Route::middleware(['role:admin' ])->group(function () { 
     // rutas del administrador
     Route::view('jefesdepartamentos', 'livewire.jefesdepartamentos.index')->middleware('auth');
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -62,8 +64,8 @@ Route::middleware(['role:admin' ])->group(function () {
     Route::view('carreras', 'livewire.carreras.index')->middleware('auth');
     Route::view('facultades', 'livewire.facultades.index')->middleware('auth');
     Route::view('unis', 'livewire.unis.index')->middleware('auth');
+
     Route::view('uni', 'livewire.uni.index')->middleware('auth');
-    Route::view('departamentos', 'livewire.departamentos.index')->middleware('auth');
     Route::get('carreras/dash', [carrerasdash::class, 'render'])->name('carrerasd')->middleware('auth');
     Route::get('carreras/panel', [carrerasdash::class, 'panel'])->name('carreraspanel')->middleware('auth');
     //  eliminar clase de carrera
@@ -73,4 +75,4 @@ Route::middleware(['role:admin' ])->group(function () {
     // ruta para universidades tienen carreras	
     Route::get('universidades/{id}/carreras', [App\Http\Controllers\UniversidadController::class, 'carreras'])->name('universidades.carreras');
     // Rutas para apli
-});
+//});

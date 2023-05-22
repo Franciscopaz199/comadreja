@@ -42,7 +42,13 @@
                                     <td>{{ $rol->name }}</td>
                                     <td>
                                         @foreach ($rol->permissions as $permiso)
-                                            <span class="badge badge-primary">{{ $permiso->name }}</span>
+                                            <span class="badge badge-primary"
+                                                style="
+                                                    background-color: #3490dc;
+                                                    padding: 5px;
+                                                "
+
+                                            >{{ $permiso->name }}</span>
                                         @endforeach
                                     </td>
                                     <td>
@@ -147,18 +153,33 @@
                                         <td>{{ $usuario->name }}</td>
                                         <td>
                                             @foreach ($usuario->roles as $rol)
-                                                <span class="badge badge-primary">{{ $rol->name }}</span>
+                                                <span class="badge badge-primary" 
+                                                style="
+                                                    background-color: #3490dc;
+                                                    padding: 5px;
+                                                ">{{ $rol->name }}</span>
                                             @endforeach
                                         </td>
                                         <td>
                                             @foreach ($usuario->permissions as $permiso)
-                                                <span class="badge badge-primary">{{ $permiso->name }}</span>
+                                                <span class="badge badge-primary"
+                                                style="
+                                                background-color: #3490dc;
+                                                padding: 5px;
+                                            "
+                                                
+                                                >{{ $permiso->name }}</span>
                                             @endforeach
                                         </td>
                                         
                                         <td>
                                             @foreach ($usuario->getAllPermissions() as $permiso)
-                                                <span class="badge badge-primary">{{ $permiso->name }}</span>
+                                                <span class="badge badge-primary"
+                                                style="
+                                                background-color: #3490dc;
+                                                padding: 5px;
+                                            "
+                                                >{{ $permiso->name }}</span>
                                             @endforeach
                                         </td>
                                     </tr>

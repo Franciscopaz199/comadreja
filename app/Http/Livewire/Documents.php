@@ -4,23 +4,22 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Departamento;
+use App\Models\Document;
 
-class Departamentos extends Component
+class Documents extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $shortname, $status;
+    public $selected_id, $keyWord, $name, $description;
 
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-        return view('livewire.departamentos.view', [
-            'departamentos' => Departamento::latest()
+        return view('livewire.documents.view', [
+            'documents' => Document::latest()
 						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('shortname', 'LIKE', $keyWord)
-						->orWhere('status', 'LIKE', $keyWord)
+						->orWhere('description', 'LIKE', $keyWord)
 						->paginate(10),
         ]);
     }
@@ -33,64 +32,58 @@ class Departamentos extends Component
     private function resetInput()
     {		
 		$this->name = null;
-		$this->shortname = null;
-		$this->status = null;
+		$this->description = null;
     }
 
     public function store()
     {
         $this->validate([
 		'name' => 'required',
-		'shortname' => 'required',
-		'status' => 'required',
+		'description' => 'required',
         ]);
 
-        Departamento::create([ 
+        Document::create([ 
 			'name' => $this-> name,
-			'shortname' => $this-> shortname,
-			'status' => $this-> status
+			'description' => $this-> description
         ]);
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');
-		session()->flash('message', 'Departamento Successfully created.');
+		session()->flash('message', 'Document Successfully created.');
     }
 
     public function edit($id)
     {
-        $record = Departamento::findOrFail($id);
+        $record = Document::findOrFail($id);
         $this->selected_id = $id; 
 		$this->name = $record-> name;
-		$this->shortname = $record-> shortname;
-		$this->status = $record-> status;
+		$this->description = $record-> description;
     }
 
     public function update()
     {
         $this->validate([
 		'name' => 'required',
-		'shortname' => 'required',
-		'status' => 'required',
+		'description' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Departamento::find($this->selected_id);
+			$record = Document::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
-			'shortname' => $this-> shortname,
-			'status' => $this-> status
+			'description' => $this-> description
             ]);
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			session()->flash('message', 'Departamento Successfully updated.');
+			session()->flash('message', 'Document Successfully updated.');
         }
     }
 
     public function destroy($id)
     {
         if ($id) {
-            Departamento::where('id', $id)->delete();
+            Document::where('id', $id)->delete();
         }
     }
 }

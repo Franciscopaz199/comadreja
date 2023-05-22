@@ -27,3 +27,5 @@ Route::get('prueba/{id}' , function ($id) {
     return view('prueba', compact('id'));
 })->name('prueba');
 */
+//Route Hooks - Do not delete//
+	Route::view('departamentos', 'livewire.departamentos.index')->middleware('auth');

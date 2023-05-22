@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Models\Clase;
-
 class Departamento extends Model
 {
 	use HasFactory;
@@ -17,68 +15,20 @@ class Departamento extends Model
 
     protected $fillable = ['name','shortname','status'];
 	
-
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function clases()
     {
-        return $this->hasMany(Clase::class, 'departamento', 'id');
+        return $this->hasMany('App\Models\Clase', 'departamento', 'id');
     }
     
-    public function carreras()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function jefesdepartamento()
     {
-        $carreras = [];
-        foreach ($this->clases as $clase) {
-            if (!in_array($clase->carreras, $carreras)) {
-                $carreras[] = $clase->carreras;
-            }
-        }
-        return $carreras;
+        return $this->hasOne('App\Models\Jefesdepartamento', 'depto_id', 'id');
     }
-
-
-    public function clases_carrera()
-    {
-        $clases_carrera = auth()->user()->student->carrer->clases;
-        $clases = [];
-        $uv = 0;
-
-        foreach ($clases_carrera as $clase) 
-        {
-            if ($clase->departamento == $this->id) 
-            {
-                array_push($clases, $clase);
-                $uv += $clase->UV;
-            }
-        }
-        $clases = [
-            'uv' => $uv,
-            'clases' => $clases,
-            'total' => count($clases)
-        ];
-        return $clases;
-    }
-
-    public function clases_estudiante()
-    {
-        $clasesestudi = auth()->user()->student->clases;
-        $clasesrestantes = [];
-        $uv = 0;
-
-        foreach ($clasesestudi as $clase) 
-        {
-            if ($clase->departamento == $this->id) 
-            {
-                array_push($clasesrestantes, $clase);
-                $uv += $clase->UV;
-            }
-        }
-
-        $clasesest = [
-            'uv' => $uv,
-            'total' => count($clasesrestantes),
-            'clases' => $clasesrestantes
-        ];
-        return $clasesest;
-    }
-
-
+    
 }
