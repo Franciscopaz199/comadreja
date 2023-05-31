@@ -1,1 +1,17 @@
 @extends('layouts.jefe-layout')
+@section('css')
+    @livewireStyles
+@endsection
+@section('nombredepto')
+    {{$deparatamento}}
+@endsection
+@section('universidadnombre')
+    {{$universidad}}
+    <p>{{$nombrecorto}}</p>
+@endsection
+@section('contenido')
+    <livewire:seccionesjefe/>
+@endsection
+@section('js')
+    @livewireScripts
+@endsection

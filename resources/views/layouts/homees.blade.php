@@ -14,6 +14,7 @@
     <link rel="stylesheet" href={{ asset('css/style-homees.css') }}>
     <link rel="stylesheet" href={{ asset('css/globalstyles.css') }}>
     @yield('css')
+    @vite(['resources/js/app.js'])
 </head>
 <body>  
     <div class="contenedor-app">

@@ -37,7 +37,11 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\student', 'user', 'id');
     }
-
+    
+    public function jefe()
+    {
+        return $this->hasOne('App\Models\Jefesdepartamento', 'user_id', 'id');
+    }
     // //relacion uno a uno con la tabla jefes_departamento
     // public function jefedepartamento()
     // {
