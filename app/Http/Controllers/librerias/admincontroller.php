@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\librerias;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,6 +12,8 @@ use App\Models\clase;
 
 class admincontroller extends Controller
 {
+
+    // esta funcion sirve para calcular que clases puede llevar el estudiante
     public function clasesquepuedelleva()
     {       
         // eliminar las clases que puede llevar el estudiante

@@ -24,7 +24,7 @@ class Carrera extends Model
     // relacion de uno a muchos con el modelo student
     public function students()
     {
-        return $this->hasMany('App\Models\Student','carrera', 'id');
+        return $this->hasMany('App\Models\student','carrera', 'id');
     }
     // relacion uno a muchos con el modelo puente
     public function puente()

@@ -9,10 +9,10 @@ use App\Models\User;
 use App\Models\student;
 use App\Models\carrera;
 use App\Models\clase;
-use App\Http\Controllers\admin\admincontroller;
 use App\Models\puente;
-use App\Http\Controllers\admin\lib;
-
+use App\Http\Controllers\librerias\admincontroller;
+use App\Http\Controllers\librerias\lib;
+use App\Http\Controllers\apli\aplicontroller;
 
 class studentController extends Controller
 {
@@ -127,8 +127,8 @@ class studentController extends Controller
         // editar el status del estudiante a true        
         auth()->user()->student->status = true;
         auth()->user()->student->save();
-
         auth()->user()->student->clases()->detach();
+
 
        
         if($request->clase != null)

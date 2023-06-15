@@ -18,12 +18,12 @@ class student extends Model
     // relacion uno a uno con la tabla universidad
     public function universidad()
     {
-        return $this->hasOne('App\Models\uni', 'id', 'uni');
+        return $this->hasOne('App\Models\Uni', 'id', 'uni');
     }
     /// relacion uno a uno con la tabla carrera
     public function carrer()
     {
-        return $this->hasOne('App\Models\carrera', 'id', 'carrera');
+        return $this->hasOne('App\Models\Carrera', 'id', 'carrera');
     }
     // relacion uno a uno con la tabla user
     public function usuario()
@@ -33,7 +33,7 @@ class student extends Model
 
     public function clases()
     {
-        return $this->belongsToMany('App\Models\clase', 'clasesaprobadas', 'student_id', 'clase_id');
+        return $this->belongsToMany('App\Models\Clase', 'clasesaprobadas', 'student_id', 'clase_id');
     }
 
    // clases que puede sacar el estudiante

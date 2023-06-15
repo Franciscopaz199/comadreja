@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\librerias;
+
 use Illuminate\Database\Eloquent\Collection;
 
 use App\Http\Controllers\Controller;

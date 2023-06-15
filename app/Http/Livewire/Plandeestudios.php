@@ -7,7 +7,7 @@ use App\Models\Clase;
 use App\Models\Carrera;
 use App\Models\Student;
 use App\Models\User;
-use App\Http\Controllers\admin\lib;
+use App\Http\Controllers\librerias\lib;
 use Livewire\Component;
 
 class Plandeestudios extends Component
